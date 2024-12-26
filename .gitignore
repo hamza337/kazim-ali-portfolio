@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+.next/
+out/
+*.next.cache/
+
+# Static files output
+public/assets/
+
+# IDE and editor files
+.vscode/
+.idea/
+.DS_Store
+
