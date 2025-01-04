@@ -39,7 +39,7 @@ const EdinaHorizontal = () => {
       <div className="edina_tm_services" id="service">
         <div className="container">
           <div className="edina_tm_title">
-            <h3>His International Services!</h3>
+            <h3>His International Courses!</h3>
             <p>
               Sir Syed Kazim Ali has been teaching and providing the following services at the international level.
             </p>
@@ -50,7 +50,7 @@ const EdinaHorizontal = () => {
       <div className="edina_tm_portfolio" id="courses">
         <div className="container">
           <div className="edina_tm_title">
-            <h3>His National Services!</h3>
+            <h3>His National Courses!</h3>
             <p>
               Sir Syed Kazim Ali has been teaching and providing the following services and courses at the national level.
             </p>

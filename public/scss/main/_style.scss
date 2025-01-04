@@ -2773,7 +2773,10 @@ body.modal {
   margin: 0px 0px 0px -30px;
   list-style-type: none;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // flex-wrap: wrap;
 }
 
 .edina_tm_contact .extra_info .wrapper>li {
@@ -2907,6 +2910,13 @@ body.modal {
   outline: none;
   border-bottom-color: #0f172a;
   background-color: transparent;
+}
+
+.custom-form-styles{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .edina_tm_contact textarea {

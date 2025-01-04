@@ -71,20 +71,20 @@ const HeaderHorizontal = () => {
 
           <div className="menu">
 
-            <ScrollspyNav
+            {/* <ScrollspyNav
               scrollTargetIds={[
                 "home",
-                "about",
-                "service",
+                // "about",
+                // "service",
                 "courses",
-                "testimonial",
-                "studentreviews",
-                "contact",
+                // "testimonial",
+                // "studentreviews",
+                // "contact",
               ]}
               activeNavClass="active"
               offset={-80}
               scrollDuration="100"
-            >
+            > */}
               <ul className="anchor_nav">
                 {sidebarContent.map((val, i) => (
                   <li key={i}>
@@ -109,7 +109,7 @@ const HeaderHorizontal = () => {
                   </li>
                 ))}
               </ul>
-            </ScrollspyNav>
+            {/* </ScrollspyNav> */}
 
           </div>
 
