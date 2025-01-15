@@ -82,7 +82,7 @@ const Courses = () => {
 
                                     <button
                                         type="button"
-                                        onClick={() => { router.push('/courses/new') }}
+                                        onClick={() => { router.push('/courses-be/new') }}
                                         className="btn btn-primary new-btn"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalCenter">
@@ -138,7 +138,7 @@ const Courses = () => {
                                                                         <DropdownMenu className='drop-down-menu' aria-label="Static Actions">
 
                                                                             <DropdownItem key="edit"
-                                                                                onClick={() => { router.push(`/courses/${item.id}`) }}>
+                                                                                onClick={() => { router.push(`/courses-be/${item.id}`) }}>
                                                                                 <MdOutlineModeEdit className='m-1' />
                                                                                 Edit
                                                                             </DropdownItem>

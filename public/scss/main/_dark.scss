@@ -123,6 +123,26 @@
 .theme-dark .edina_tm_services ul li .learn_more {
   color: #a9afc3;
 }
+.theme-dark .edina_tm_about{
+  background-color: #111319;
+}
+
+.theme-dark .edina_tm_national_services {
+  background-color: #111319;
+}
+.theme-dark .edina_tm_national_services ul li .list_inner {
+  background-color: #000;
+}
+.theme-dark .edina_tm_national_services ul li .svg.custom {
+  filter: invert(1);
+}
+.theme-dark .edina_tm_national_services ul li h3 {
+  color: #fff;
+}
+
+.theme-dark .edina_tm_national_services ul li .learn_more {
+  color: #a9afc3;
+}
 .theme-dark .my_carousel ul .details span a {
   color: #a9afc3;
 }
@@ -381,4 +401,11 @@ body.intro .loader_line:after {
 }
 .theme-dark .news_share ul li a {
   color: #eee;
+}
+
+.theme-dark .course-info-style {
+  background-color: #191c26;
+}
+.theme-dark .course-info-style ul li h6 {
+  color: white;
 }

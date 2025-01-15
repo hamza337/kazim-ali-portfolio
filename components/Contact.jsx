@@ -1,40 +1,33 @@
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { submitContactForm } from '../redux/action/contact/index';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Contact = () => {
   const form = useRef();
-  const dispatch = useDispatch();
+  const baseUrl = 'http://localhost:1337/api'
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
-
-    const formData = {
-      name: form.current.name.value,
-      email: form.current.email.value,
-      message: form.current.message.value,
-    };
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      await dispatch(submitContactForm(formData));
-      toast.success('Message Sent Successfully!', {
-        position: 'top-right',
-        autoClose: 2000,
-      });
-      document.getElementById('myForm').reset();
+      await axios.post(`${baseUrl}/contacts`,{
+        data:{
+          name: form.current.name.value,
+          email: form.current.email.value,
+          message: form.current.message.value,
+          number: form.current.phone.value
+        }
+      })
+      toast.success('Form Submitted Successfully');
+      form.current.reset();
     } catch (error) {
-      toast.error('Message not sent!', {
-        position: 'top-right',
-        autoClose: 2000,
-      });
+      toast.error('Error Submitting Form');
     }
-  };
+  }
 
   return (
     <>
-      <form className="contact_form" id="myForm" ref={form} onSubmit={sendEmail}>
+      <form className="contact_form" id="myForm" ref={form}>
         <div className="first_row">
           <input type="text" placeholder="Name *" name="name" required />
         </div>
@@ -52,7 +45,7 @@ const Contact = () => {
         </div>
 
         <div className="edina_tm_button">
-          <button type="submit" className="color">
+          <button type="submit" className="color" onClick={handleSubmit}>
             Submit
           </button>
         </div>

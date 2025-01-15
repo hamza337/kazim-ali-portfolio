@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Slider from "react-slick";
-import testimonialContent from "../../data/testimonial";
 import Image from "next/image";
+import axios from "axios";
 
 export default function Testimonial() {
+  const baseUrl = 'http://localhost:1337/api'
+  const cmsUrl = 'http://localhost:1337'
+  const [data, setData] = useState([]);
   var settings = {
     dots: true,
     arrow: false,
@@ -24,14 +27,29 @@ export default function Testimonial() {
     ],
   };
 
+  const getTestimonials = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/testimonials?populate=*&sort[0]=createdAt:desc`)
+      setData(response.data.data);
+      console.log('testimonials', response.data.data);
+    }
+    catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getTestimonials();
+  },[])
+
   return (
     <Slider {...settings}>
-      {testimonialContent.map((val, i) => (
+      {data?.slice(0,6).map((val, i) => (
         <li
           key={i}
           data-aos="fade-right"
           data-aos-duration="1200"
-          data-aos-delay={val.delayAnimation}
+          data-aos-delay='100'
         >
           <div className="list_inner">
             <div className="details">
@@ -40,7 +58,7 @@ export default function Testimonial() {
                   <div
                     className="main"
                     style={{
-                      backgroundImage: `url(img/testimonials/${val.img}.jpg)`,
+                      backgroundImage: `url(${cmsUrl}${val.image?.url})`,
                     }}
                   ></div>
                 </div>
@@ -67,7 +85,7 @@ export default function Testimonial() {
             </div>
 
             <div className="text">
-              <p>{val.desc}</p>
+              <p>{val.description}</p>
             </div>
             {/* End description */}
           </div>

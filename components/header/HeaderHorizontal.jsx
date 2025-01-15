@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import ScrollspyNav from "react-scrollspy-nav";
 import sidebarContent from "../../data/sidebar";
@@ -19,6 +19,8 @@ const HeaderHorizontal = () => {
   const handleClick = () => setClick(!click);
   const router = useRouter()
   const [navbar, setNavbar] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const dropdownRef = useRef(null);
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -28,8 +30,23 @@ const HeaderHorizontal = () => {
     }
   };
 
+  const toggleDropdown = (itemName) => {
+    setActiveDropdown((prev) => (prev === itemName ? null : itemName));
+  };
+  
+
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
   return (
@@ -69,7 +86,7 @@ const HeaderHorizontal = () => {
           </div>
           {/* End .logo */}
 
-          <div className="menu">
+          {/* <div className="menu"> */}
 
             {/* <ScrollspyNav
               scrollTargetIds={[
@@ -85,7 +102,7 @@ const HeaderHorizontal = () => {
               offset={-80}
               scrollDuration="100"
             > */}
-              <ul className="anchor_nav">
+              {/* <ul className="anchor_nav">
                 {sidebarContent.map((val, i) => (
                   <li key={i}>
                     <div className="list_inner">
@@ -108,10 +125,68 @@ const HeaderHorizontal = () => {
                     </div>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
+              
             {/* </ScrollspyNav> */}
 
+          {/* </div> */}
+          <div className="menu">
+            <ul className="anchor_nav" ref={dropdownRef}>
+              {sidebarContent.map((val, i) => (
+                // <li key={i} className="position-relative">
+                <li
+                  key={i}
+                  className={`menu-item ${val.subItems ? "has-dropdown" : ""} ${
+                    activeDropdown === val.itemName ? "open" : ""
+                  }`}
+                >
+                  <div 
+                    className="list_inner"
+                    onClick={(e) => {
+                      if (val.subItems) {
+                        e.preventDefault();
+                        toggleDropdown(val.itemName);
+                      } else if (val.link) {
+                        router.push(val.itemRoute);
+                      }
+                    }}
+                  >
+                    <a
+                      href={val.link ? val.itemRoute : "#"}
+                      className={val.activeClass}
+                      onClick={val.link ? () => router.push(val.itemRoute) : undefined}
+                    >
+                      <Image
+                        width={18}
+                        height={18}
+                        className="svg custom"
+                        src={`/img/svg/${val.icon}.svg`}
+                        alt="icon"
+                      />
+                      {val.itemName}
+                      {val.subItems && (
+                        <span className={`dropdown-arrow ${activeDropdown === val.itemName ? "rotate" : ""}`}>
+                          ▼
+                        </span>
+                      )}
+                    </a>
+                    {val.subItems && activeDropdown === val.itemName && (
+                      <ul className="custom-dropdown-menu">
+                        {val.subItems.map((subItems, index) => (
+                          <li key={index} className="custom-dropdown-item">
+                            <Link href={subItems.itemRoute}>
+                              {subItems.itemName}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
+
 
           {/* End .menu */}
 

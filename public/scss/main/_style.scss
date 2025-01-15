@@ -2773,10 +2773,9 @@ body.modal {
   margin: 0px 0px 0px -30px;
   list-style-type: none;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .edina_tm_contact .extra_info .wrapper>li {
@@ -2910,13 +2909,6 @@ body.modal {
   outline: none;
   border-bottom-color: #0f172a;
   background-color: transparent;
-}
-
-.custom-form-styles{
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .edina_tm_contact textarea {
@@ -3376,6 +3368,14 @@ a {
     font-size: 22px;
   }
 
+  .edina_tm_national_services ul li .list_inner {
+    padding-right: 40px;
+  }
+
+  .edina_tm_national_services ul li h3 {
+    font-size: 22px;
+  }
+
   .edina_tm_testimonials .list .short h3 {
     font-size: 19px;
   }
@@ -3459,6 +3459,10 @@ a {
 
   .edina_tm_services ul li {
     width: 33%;
+  }
+
+  .edina_tm_national_services ul li {
+    width: 33% !important;
   }
 
   .edina_tm_contact .mainpart {
@@ -3623,6 +3627,11 @@ a {
     padding-right: 20px;
   }
 
+  .edina_tm_national_services ul li .list_inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .edina_tm_contact .mainpart .left {
     padding-left: 20px;
     padding-right: 20px;
@@ -3678,6 +3687,19 @@ a {
 
   .edina_tm_services ul li {
     width: 100%;
+    padding-left: 0px;
+  }
+
+  .edina_tm_national_services ul,
+  .my_carousel ul,
+  .edina_tm_testimonials .list ul,
+  .edina_tm_contact .extra_info .wrapper {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .edina_tm_national_services ul li {
+    width: 100% !important;
     padding-left: 0px;
   }
 
@@ -4412,5 +4434,343 @@ a {
 
   100% {
     transform: rotateY(360deg);
+  }
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  position: relative;
+  margin-right: 20px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu-link:hover {
+  color: #000;
+}
+
+.has-dropdown .dropdown-arrow {
+  margin-left: 6px;
+  font-size: 8px;
+  transition: transform 0.3s;
+}
+
+.has-dropdown .dropdown-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  width: 230px;
+  z-index: 1;
+}
+
+.menu-item.open .custom-dropdown-menu {
+  display: block !important;
+}
+
+.custom-dropdown-item a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  list-style: none;
+}
+
+.custom-dropdown-item a:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+// =================================================================
+
+// CUSTOM CSS
+
+.edina_tm_national_services {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  background-color: transparent;
+  padding: 120px 0px 90px 0px;
+
+  @media screen and (max-width: 991px) {
+    padding: 90px 0px 60px 0px;
+  }
+}
+
+.edina_tm_national_services .service_list {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding-top: 60px;
+}
+
+.edina_tm_national_services ul {
+  margin: 0px 0px 0px -30px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edina_tm_national_services ul li {
+  margin: 0px 0px 30px 0px;
+  width: 25%;
+  padding-left: 30px;
+  float: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.edina_tm_national_services ul li .list_inner {
+  width: 100%;
+  height: 100%;
+  clear: both;
+  float: left;
+  position: relative;
+  background-color: #f5f8fc;
+  padding: 50px 50px 45px 50px;
+  border-radius: 6px;
+  min-height: 295px;
+  overflow: hidden;
+
+  .hover {
+    position: relative;
+    z-index: 5;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #000;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: inherit;
+    transition: 0.7s;
+    backface-visibility: hidden;
+  }
+
+  &:hover {
+    &::before {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.edina_tm_national_services ul li .list_inner:hover {
+
+  .svg,
+  .service_title,
+  .learn_more,
+  .course_price {
+    animation: slideLeft 0.7s ease-in-out 0s 1 normal none running !important;
+  }
+}
+
+
+.edina_tm_national_services ul li .svg {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.edina_tm_national_services ul li .list_inner:hover .svg {
+  color: #fff;
+  filter: invert(1);
+}
+
+.edina_tm_national_services ul li .list_inner:hover .svg.custom {
+  stroke: #fff;
+}
+
+.edina_tm_national_services ul li h3 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+
+  /* New Properties for Text Overflow */
+  display: -webkit-box;
+  /* Use a flexible box layout */
+  -webkit-line-clamp: 3;
+  /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  /* Set the orientation to vertical */
+  overflow: hidden;
+  /* Hide overflow */
+  text-overflow: ellipsis;
+  /* Add the ellipsis (dots) */
+}
+
+.edina_tm_national_services ul li .list_inner:hover h3 {
+  color: #fff;
+}
+
+.edina_tm_national_services ul li .learn_more,
+.edina_tm_national_services ul li .course_price {
+  text-decoration: none;
+  color: #7e7e7e;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.edina_tm_national_services ul li .course_price p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.edina_tm_national_services ul li .learn_more span {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 2px;
+  background-color: #7e7e7e;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 14px;
+  border-radius: 50px;
+
+  transition: all 0.7s ease;
+}
+
+.edina_tm_national_services ul li .learn_more span:before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 2px;
+  background-color: #7e7e7e;
+  transform: rotate(45deg);
+  right: 0px;
+  top: -2px;
+  border-radius: 50px;
+  transition: all 0.7s ease;
+}
+
+.edina_tm_national_services ul li .learn_more span:after {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 2px;
+  background-color: #7e7e7e;
+  transform: rotate(-45deg);
+  right: 0px;
+  bottom: -2px;
+  border-radius: 50px;
+  transition: all 0.7s ease;
+}
+
+.edina_tm_national_services ul li .list_inner:hover .learn_more span {
+  width: 30px;
+  background-color: #fff;
+}
+
+.edina_tm_national_services ul li .list_inner:hover .learn_more span:before,
+.edina_tm_national_services ul li .list_inner:hover .learn_more span:after {
+  background-color: #fff;
+}
+
+.edina_tm_national_services ul li .list_inner:hover .learn_more,
+.edina_tm_national_services ul li .list_inner:hover .course_price {
+  color: #fff;
+}
+
+.edina_tm_national_services .popup_informations {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  z-index: -11;
+  display: none;
+}
+
+.course-info-style {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f8fc;
+  border-radius: 20px;
+  margin-bottom: 20px;
+
+  ul {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; // Align content at the top.
+    flex-wrap: wrap; // Enable wrapping for div elements.
+
+    div {
+      display: flex;
+      flex-direction: column; // Ensure li elements stack within each div.
+      width: 30%; // Ensure divs take up a third of the width.
+
+      @media screen and (max-width: 600px) {
+        width: 50%; // Make divs full width on smaller screens.
+      }
+
+      li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        h6 {
+          @media screen and (max-width: 767px) {
+            font-size: 14px;
+          }
+        }
+
+        span {
+          font-size: 16px;
+
+          @media screen and (max-width: 767px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    ul {
+      justify-content: flex-start; // Align divs to the left on small screens.
+    }
   }
 }

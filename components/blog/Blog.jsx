@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { removeTags } from "../../assets";
+import axios from "axios";
 
 Modal.setAppElement("#__next");
 
 const Blog = () => {
+  const baseUrl = "http://localhost:1337/api";
+  const cmsUrl = "http://localhost:1337";
+  const [data, setData] = useState([]);
   var settings = {
     dots: false,
     arrow: true,
-    infinite: true,
+    infinite: data?.length > 3,
     speed: 800,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -42,24 +46,26 @@ const Blog = () => {
           .replace(/[^\w-]+/g, "");
       };
 
-  // Filter published reviews and sort by creation date (newest first)
-  const filteredReviews = review.allReviews
-    .filter((item) => item.isPublished)
-    .sort((a, b) => new Date(b.createDateTime) - new Date(a.createDateTime));
+  const getReviews = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/student-reviews?populate=*&sort[0]=createdAt:desc`)
+      setData(response.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getReviews();
+  },[])
 
   return (
     <div className="news_inner my_carousel" id="modal">
       <ul>
         {/* Slider component */}
         <Slider {...settings}>
-          {filteredReviews.length > 0 &&
-            filteredReviews.map((item) => {
-              // Format the date as "02 May 2024"
-              const formattedDate = new Date(item.createDateTime).toLocaleDateString("en-US", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              });
+          {data?.length > 0 &&
+            data?.slice(0,6).map((item) => {
               const slug = generateSlug(item.title); // Generate slug from title
               // Return the <li> element inside the map function
               return (
@@ -79,16 +85,16 @@ const Blog = () => {
                       <div
                         className="main"
                         style={{
-                          backgroundImage: `url(${item.featuredImage})`,
+                          backgroundImage: `url(${cmsUrl}${item.reviewerImage?.url})`,
                         }}
                       ></div>
                     </div>
 
                     <div className="news_details">
                       <span>
-                        {formattedDate}{" "}
+                        {item.reviewerName}{" "}
                         <a href="#!">
-                          {item.categoryName ? removeTags(item.categoryName) : "Uncategorized"}
+                          {item.reviewerDesignation ? removeTags(item.reviewerDesignation) : "_"}
                         </a>
                       </span>
                       <h3

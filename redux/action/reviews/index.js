@@ -42,7 +42,7 @@ export const GetAllReviews = (onError) => {
         response => {
           if (response.status === 200) {
             // Generate slug for each service
-            const reviewsWithSlug = response.data.map((item) => ({
+            const reviewsWithSlug = response.data.data.map((item) => ({
               ...item,
               slug: item.slug || generateSlug(item.title), // Generate slug from title
             }));

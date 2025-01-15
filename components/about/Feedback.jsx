@@ -1,11 +1,10 @@
 import Image from "next/image";
-import feedbackContent from "../../data/feedback";
 
-const Feedback = () => {
+const Feedback = ({data}) => {
   return (
     <ul>
-      {feedbackContent.map((val, i) => (
-        <li key={i}>
+      {data?.map((val, id) => (
+        <li key={id}>
           <div className="icon">
             <Image
               width={19}
@@ -16,10 +15,10 @@ const Feedback = () => {
           </div>
     
           <h5 className="poppins-font text-uppercase">
-            {val.title}
+            {val.comment}
             {/* <span className="place open-sans-font">{val.institute}</span> */}
           </h5>
-          <a href={val.url} target="_blank" className="open-sans-font about_link_name">{val.linkName}</a>
+          <a href={val.link} target="_blank" className="open-sans-font about_link_name">{val.plateformName}</a>
         </li>
       ))}
     </ul>

@@ -1,6 +1,6 @@
 
 const PAGE_LIMIT = 10;
-const baseUrl = "https://teachpro.somee.com/api/";
+const baseUrl = "http://localhost:1337/api/";
 const contactUrl = "https://teachpro.somee.com/";
 const APP_SETTINGS = {
     API_PATH: {
@@ -14,10 +14,19 @@ const APP_SETTINGS = {
             delete: baseUrl + 'categories'
         },
         REVIEWS: {
-            getAll: baseUrl + 'reviews',
+            getAll: baseUrl + 'student-reviews?populate=*',
             add: baseUrl + 'reviews',
             update: baseUrl + 'reviews',
             delete: baseUrl + 'reviews'
+        },
+        NATIONALCOURSES: {
+            getAll: baseUrl + 'courses?populate=*',
+        },
+        INTERNATIONALCOURSES: {
+            getAll: baseUrl + 'international-courses?populate=*',
+        },
+        BLOGS: {
+            getAll: baseUrl + 'blogs?populate=*',
         },
         SERVICES: {
             getAll: baseUrl + 'services',
@@ -26,7 +35,7 @@ const APP_SETTINGS = {
             delete: baseUrl + 'services'
         },
         CSSANDPMS: {
-            getAll: baseUrl + 'pmsEssays',
+            getAll: baseUrl + 'css-and-pms-essays?populate=*',
             add: baseUrl + 'pmsEssays',
             update: baseUrl + 'pmsEssays',
             delete: baseUrl + 'pmsEssays'

@@ -1,19 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 import Tilt from "react-parallax-tilt";
+import axios from "axios";
 
 Modal.setAppElement("#__next");
 
-const Service = () => {
-  const [visibleServices, setVisibleServices] = useState(4);
+const Service = ({apiRoute, path}) => {
+  const [courses, setCourses] = useState([]);
+  const baseUrl = 'http://localhost:1337/api'
   const router = useRouter();
-  const service = useSelector((state) => state.service);
-  
-  const filteredServices = service.allServices
-    .filter((item) => item.isPublished && !item.isNational)
-    .sort((a, b) => new Date(b.createDateTime) - new Date(a.createDateTime));
 
   // Generate slug dynamically from the title
   const generateSlug = (title) => {
@@ -23,24 +19,29 @@ const Service = () => {
       .replace(/[^\w-]+/g, "");
   };
 
-  const loadMoreServices = () => {
-    setVisibleServices((prev) => prev + 4);
-  };
+  const getAllInternationalCourses = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/${apiRoute}?populate=*&sort[0]=createdAt:desc`)
+      setCourses(response?.data.data);
+    } catch (err) {
+      console.error('Error Fetching Data');
+    }
+  }
 
-  const showLessServices = () => {
-    setVisibleServices(4);
-  };
+  useEffect(() => {
+    getAllInternationalCourses();
+  },[])
 
   return (
     <div className="service_list">
       <ul>
-        {filteredServices.slice(0, visibleServices).map((item) => (
+        {courses.slice(0, 4).map((item) => (
           <li data-aos="fade-right" data-aos-duration="1200" key={item.id}>
             <Tilt>
               <div
                 className="list_inner"
                 // Navigate using the generated slug instead of ID
-                onClick={() => router.push(`/international-service/${generateSlug(item.title)}`)}
+                onClick={() => router.push(`${path}/details/${generateSlug(item.title)}`)}
               >
                 <div className="hover">
                   <div className="course_price">
@@ -61,12 +62,12 @@ const Service = () => {
         ))}
       </ul>
 
-      <div className="show_more_btn edina_tm_about edina_tm_button">
-        {visibleServices < filteredServices.length ? (
-          <button className="color" onClick={loadMoreServices}>Show More</button>
-        ) : (
-          <button className="color" onClick={showLessServices}>Show Less</button>
-        )}
+      <div className="show_more_btn edina_tm_button">
+        <button className="color"
+        onClick={() => router.push(`${path}`)}
+        >
+          Show More
+        </button>
       </div>
     </div>
   );

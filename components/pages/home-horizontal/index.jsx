@@ -44,10 +44,21 @@ const EdinaHorizontal = () => {
               Sir Syed Kazim Ali has been teaching and providing the following services at the international level.
             </p>
           </div>
-          <Service />
+          <Service apiRoute='international-courses' path='/international-courses'/>
         </div>
       </div>
-      <div className="edina_tm_portfolio" id="courses">
+      <div className="edina_tm_national_services" id="service">
+        <div className="container">
+          <div className="edina_tm_title">
+            <h3>His National Courses!</h3>
+            <p>
+              Sir Syed Kazim Ali has been teaching and providing the following services at the national level.
+            </p>
+          </div>
+          <Service apiRoute='courses' path='/national-courses'/>
+        </div>
+      </div>
+      {/* <div className="edina_tm_portfolio" id="courses">
         <div className="container">
           <div className="edina_tm_title">
             <h3>His National Courses!</h3>
@@ -57,7 +68,7 @@ const EdinaHorizontal = () => {
           </div>
           <Portfolio />
         </div>
-      </div>
+      </div> */}
       <div className="edina_tm_testimonials" id="testimonial">
         <div className="container">
           <div className="edina_tm_title">
@@ -76,7 +87,7 @@ const EdinaHorizontal = () => {
       </div>
       {/* End Testimonial */}
 
-
+      {/* Start Student Rreviews Slider */}
       <div className="edina_tm_news" id="studentreviews">
         <div className="container">
           <div className="edina_tm_title">
@@ -88,6 +99,7 @@ const EdinaHorizontal = () => {
           <Blog />
         </div>
       </div>
+      {/* End Student Rreviews Slider */}
 
     </div>
   );

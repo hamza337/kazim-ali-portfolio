@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { removeTags } from "../../assets";
 
 const ReviewList = () => {
   const router = useRouter();
   const review = useSelector((state) => state.review);
+  const cmsUrl = 'http://localhost:1337'
 
     // Generate slug dynamically from the title
     const generateSlug = (title) => {
@@ -19,22 +19,20 @@ const ReviewList = () => {
   const isLoading = !review.allReviews || review.allReviews.length === 0;
 
   // Filter published reviews and sort by creation date (newest first)
-  const filteredReviews = review.allReviews
-    ? review.allReviews
-        .filter((item) => item.isPublished)
-        .sort((a, b) => new Date(b.createDateTime) - new Date(a.createDateTime))
-    : [];
+  const filteredReviews = review.allReviews ? review.allReviews : [];
 
   if (isLoading) {
     return <p className="text-center">Loading reviews...</p>;
   }
+
+  console.log('first', filteredReviews)
 
   return (
     <div className="news_inner my_carousel review_list">
       <ul>
         {filteredReviews.length > 0 &&
           filteredReviews.map((item) => {
-            const formattedDate = new Date(item.createDateTime).toLocaleDateString("en-US", {
+            const formattedDate = new Date(item.postedDate).toLocaleDateString("en-US", {
               day: "2-digit",
               month: "long",
               year: "numeric",
@@ -58,7 +56,7 @@ const ReviewList = () => {
                     <div
                       className="main"
                       style={{
-                        backgroundImage: `url(${item.featuredImage})`,
+                        backgroundImage: `url(${cmsUrl}${item.reviewerImage?.url})`,
                       }}
                     ></div>
                   </div>
@@ -67,7 +65,7 @@ const ReviewList = () => {
                     <span>
                       {formattedDate}{" "}
                       <a href="#!">
-                        {item.categoryName ? removeTags(item.categoryName) : "Uncategorized"}
+                        {item.reviewerName ? item.reviewerName : ""}
                       </a>
                     </span>
                     <h3

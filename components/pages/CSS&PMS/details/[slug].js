@@ -7,10 +7,12 @@ import DOMPurify from "dompurify";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 
 export default function CSSAndPMSDetail() {
   const router = useRouter();
   const { slug } = router.query; // Slug from the URL
+  const cmsUrl = 'http://localhost:1337'
   const dispatch = useDispatch();
   const cssAndPms = useSelector((state) => state.cssAndPms);
 
@@ -72,7 +74,7 @@ export default function CSSAndPMSDetail() {
                 <div
                   className="main"
                   style={{
-                    backgroundImage: `url(${selectedCSSPMS?.featuredImage})`,
+                    backgroundImage: `url(${cmsUrl}${selectedCSSPMS?.coverImage?.url})`,
                   }}
                 ></div>
               </div>
@@ -81,20 +83,17 @@ export default function CSSAndPMSDetail() {
               </div>
               <CPFSection />
               <div className="main_content paddingTop">
-                <div className="heading-1">
-                  <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
-                </div>
-                <div className="paddingTop descriptions">
-                  <div dangerouslySetInnerHTML={{ __html: sanitizedDescription }} />
+                <div className="heading-1" style={{"margin-bottom":'20px'}}>
+                  <ReactMarkdown>{selectedCSSPMS?.content?.slice(0,1200)}</ReactMarkdown>
                 </div>
                 <div className="cpf-button edina_tm_button">
                   <a
-                    href={selectedCSSPMS?.buttonUrl}
+                    href={selectedCSSPMS?.essayLink}
                     className="color"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {selectedCSSPMS?.buttonText}
+                    Read Full Content
                   </a>
                 </div>
                 <div className="news_share ">

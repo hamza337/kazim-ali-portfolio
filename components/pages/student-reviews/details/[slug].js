@@ -12,6 +12,7 @@ export default function Detail() {
     const { slug } = router.query; // Slug from the URL
     const dispatch = useDispatch();
     const review = useSelector((state) => state.review);
+    const cmsUrl = 'http://localhost:1337'
 
     const onError = (errorMessage) => {
         toast.error(errorMessage, {
@@ -50,11 +51,6 @@ export default function Detail() {
   }
 
     const sanitizedDescription = DOMPurify.sanitize(selectedReviews?.description || "");
-    const formattedDate = new Date(selectedReviews?.createDateTime).toLocaleDateString('en-US', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-    });
 
     return (
         <div className="edina_tm_modalbox studentreviews">
@@ -70,17 +66,17 @@ export default function Detail() {
                                     <div
                                         className="main"
                                         style={{
-                                            backgroundImage: `url(${selectedReviews?.featuredImage})`,
+                                            backgroundImage: `url(${cmsUrl}${selectedReviews?.coverImage?.url})`,
                                         }}
                                     ></div>
                                 </div>
                                 <div className="news_details">
                                     <span>
-                                        {formattedDate}{" "}
+                                        {selectedReviews?.postedDate}{" "}
                                         <a href="#">
-                                            {selectedReviews?.categoryName
-                                                ? selectedReviews?.categoryName
-                                                : "Uncategorized"}
+                                            {selectedReviews?.reviewerName
+                                                ? selectedReviews?.reviewerName
+                                                : ""}
                                         </a>
                                     </span>
                                     <h3 className="title">{selectedReviews?.title}</h3>
@@ -92,7 +88,7 @@ export default function Detail() {
                                         {/* Rendering sanitized HTML using dangerouslySetInnerHTML */}
                                         <div
                                             dangerouslySetInnerHTML={{
-                                                __html: sanitizedDescription
+                                                __html: selectedReviews?.content
                                             }}
                                         />
                                     </div>

@@ -41,7 +41,7 @@ export function SideBar() {
                 </li>
                 <li className="menu-item">
                     <Link
-                        href="/courses"
+                        href="/courses-be"
                         className="menu-link">
                         <i className="menu-icon d-none tf-icons bx bx-grid"></i>
                         <MdOutlineGridOn className="menu-icon tf-icons" />

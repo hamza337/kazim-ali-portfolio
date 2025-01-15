@@ -1,10 +1,10 @@
 import Image from "next/image";
 import educationContent from "../../data/education";
 
-const Education = () => {
+const Education = ({data}) => {
   return (
     <ul>
-      {educationContent.map((val, i) => (
+      {data?.map((val, i) => (
         <li key={i}>
           <div className="icon">
             <Image
@@ -14,12 +14,12 @@ const Education = () => {
               alt="icon"
             />
           </div>
-          <span className="time open-sans-font text-uppercase">{val.year}</span>
+          <span className="time open-sans-font text-uppercase">{val.Year}</span>
           <h5 className="poppins-font text-uppercase">
             {val.degree}
             <span className="place open-sans-font">{val.institute}</span>
           </h5>
-          <p className="open-sans-font">{val.details}</p>
+          <p className="open-sans-font">{val.description}</p>
         </li>
       ))}
     </ul>

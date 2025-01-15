@@ -7,6 +7,7 @@ import DOMPurify from "dompurify";
 const CSSAndPMSList = () => {
     const router = useRouter();
     const cssAndPms = useSelector((state) => state.cssAndPms);
+    const cmsUrl = 'http://localhost:1337'
   
       // Generate slug dynamically from the title
   const generateSlug = (title) => {
@@ -19,11 +20,7 @@ const CSSAndPMSList = () => {
     const isLoading = !cssAndPms.allCssAndPms || cssAndPms.allCssAndPms.length === 0;
 
   
-    const filteredReviews = cssAndPms.allCssAndPms
-        ? cssAndPms.allCssAndPms
-            .filter((item) => item.isPublished)
-            .sort((a, b) => new Date(b.createDateTime) - new Date(a.createDateTime))
-        : [];
+    const filteredReviews = cssAndPms.allCssAndPms ? cssAndPms.allCssAndPms : [];
 
     if (isLoading) {
         return <p className="text-center">Loading List...</p>;
@@ -31,7 +28,7 @@ const CSSAndPMSList = () => {
     return (
         <div className="news_inner my_carousel review_list pms_list">
             <ul>
-                {filteredReviews.length > 0 &&
+                {filteredReviews?.length > 0 &&
                     filteredReviews.map((item) => {
                         const sanitizedDescription = DOMPurify.sanitize(item?.description || "");
                         const slug = generateSlug(item.title); // Generate slug from title
@@ -50,7 +47,7 @@ const CSSAndPMSList = () => {
                                         <div
                                             className="main"
                                             style={{
-                                                backgroundImage: `url(${item.featuredImage})`,
+                                                backgroundImage: `url(${cmsUrl}${item?.coverImage?.url})`,
                                             }}
                                         ></div>
                                     </div>
@@ -69,7 +66,7 @@ const CSSAndPMSList = () => {
                                         <div className="descriptions">
                                             <div
                                                 dangerouslySetInnerHTML={{
-                                                    __html: truncateString(sanitizedDescription, 35)
+                                                    __html: truncateString(item.description?.slice(0,100))
                                                 }}
                                             />
                                         </div>

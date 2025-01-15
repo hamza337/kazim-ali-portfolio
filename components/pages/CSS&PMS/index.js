@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllCSS, GetAllLOOKUPS } from "../../../redux/action";
+import { GetAllCSS } from "../../../redux/action";
 import CSSAndPMSList from "./CSSAndPMSList";
 import DOMPurify from "dompurify";
 
@@ -8,7 +8,6 @@ const CssAndPms = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(GetAllCSS());
-        dispatch(GetAllLOOKUPS())
     }, [dispatch]);
 
     const cssAndPms = useSelector((state) => state.cssAndPms);
@@ -33,6 +32,7 @@ const CssAndPms = () => {
                       __html: sanitizedDescription,
                     }}
                   />
+                  Stay ahead in your preparation with Sir Kazim’s enriching blogs, designed to empower you with in-depth knowledge and practical strategies for CSS and PMS exams. Explore expert insights on mastering competitive exam techniques, honing professional English writing skills, and navigating your career path with confidence. Tailored to inspire and guide aspiring students, Sir Kazim’s regular posts provide the tools you need to excel academically and professionally. Step into a world of learning and inspiration with Sir Kazim, and unlock your potential for success today.
                                             </p>
                                         </div>
                                     </div>
