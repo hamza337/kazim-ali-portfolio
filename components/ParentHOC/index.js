@@ -9,22 +9,27 @@ import { SideBar } from "../sidebar";
 import "react-toastify/dist/ReactToastify.css";
 
 const ParentHOC = ({ children, ...rest }) => {
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(() => {
+        // Get theme from localStorage or fallback to false (light mode)
+        return localStorage.getItem("theme-color") === "theme-dark";
+    });
     const authorized = useAuth()
     useEffect(() => {
-        // document.querySelector("body").classList.remove("rtl");
+        document.querySelector("body").classList.remove("rtl");
     }, []);
 
     const handleLabelClick = () => {
         if (isDark) {
+            console.log('dark')
             localStorage.setItem("theme-color", "theme-light");
-            // document.querySelector("body").classList.add("theme-light");
-            // document.querySelector("body").classList.remove("theme-dark");
+            document.querySelector("body").classList.add("theme-light");
+            document.querySelector("body").classList.remove("theme-dark");
             setIsDark(false);
         } else {
+            console.log('light')
             localStorage.setItem("theme-color", "theme-dark");
-            // document.querySelector("body").classList.add("theme-dark");
-            // document.querySelector("body").classList.remove("theme-light");
+            document.querySelector("body").classList.add("theme-dark");
+            document.querySelector("body").classList.remove("theme-light");
             setIsDark(true);
         }
     };
@@ -68,19 +73,19 @@ const ParentHOC = ({ children, ...rest }) => {
 export const AdminParentHOC = ({ children, ...rest }) => {
     const [isDark, setIsDark] = useState(false);
     useEffect(() => {
-        // document.querySelector("body").classList.remove("rtl");
+        document.querySelector("body").classList.remove("rtl");
     }, []);
 
     const handleLabelClick = () => {
         if (isDark) {
             localStorage.setItem("theme-color", "theme-light");
-            // document.querySelector("body").classList.add("theme-light");
-            // document.querySelector("body").classList.remove("theme-dark");
+            document.querySelector("body").classList.add("theme-light");
+            document.querySelector("body").classList.remove("theme-dark");
             setIsDark(false);
         } else {
             localStorage.setItem("theme-color", "theme-dark");
-            // document.querySelector("body").classList.add("theme-dark");
-            // document.querySelector("body").classList.remove("theme-light");
+            document.querySelector("body").classList.add("theme-dark");
+            document.querySelector("body").classList.remove("theme-light");
             setIsDark(true);
         }
     };

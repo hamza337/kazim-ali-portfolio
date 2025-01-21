@@ -56,7 +56,7 @@ var settings = {
 
 const EdinaPreview = () => {
   useEffect(() => {
-    // document.querySelector("body").classList.remove("theme-dark");
+    document.querySelector("body").classList.remove("theme-dark");
   }, []);
 
   return (

@@ -1,12 +1,6 @@
 
 import {
-    getLookUpLoading, getLookUpFailure, getLookUpSuccess,
-    editLookupLoading, editLookupFailure, editLookupSuccess,
-    cssAndPmsByIDLoading, cssAndPmsByIDFailure, cssAndPmsByIDSuccess,
     allCssAndPmsFailure, allCssAndPmsSuccess, allCssAndPmsLoading,
-    addCssAndPmsFailure, addCssAndPmsSuccess, addCssAndPmsLoading,
-    editCssAndPmsFailure, editCssAndPmsSuccess, editCssAndPmsLoading,
-    removeCssAndPmsFailure, removeCssAndPmsSuccess, removeCssAndPmsLoading,
 } from '../../reducer';
 import { getAllCSS, } from '../../api';
 

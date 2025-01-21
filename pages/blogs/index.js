@@ -5,8 +5,8 @@ import MyBlogs from "../../components/pages/my-blogs";
 
 const index = () => {
     const pageTitle = "Blogs Page";
-    const description = "Read what our students have to say about their experience with our coaching services.";
-    const keywords = "blogs , articles";
+    const description = "Explore insightful blogs by Sir Kazim Ali, covering essay and precis teaching, and career growth strategies. Stay updated and inspired!";
+    const keywords = "blogs, sir kazim blogs, syed kazim ali blogs, syed kazim ali articles, blogs list, articles";
     const image = theimage; 
 
     return (

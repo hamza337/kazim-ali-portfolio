@@ -1,8 +1,6 @@
 import {
-  reviewByIDFailure, reviewByIDSuccess, reviewByIDLoading,
   allReviewsFailure, allReviewsSuccess, allReviewsLoading,
 } from '../../reducer';
-import { getAllReviews } from '../../api';
 import { getAllBlogs } from '../../api/blogs/index';
 
 export const GetAllBlogs = (onError) => {
@@ -41,31 +39,4 @@ const generateSlug = (title) => {
     .toLowerCase()
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '');
-};
-export const GetAllReviewsById = (id, onError) => {
-  return dispatch => {
-      dispatch(reviewByIDLoading())
-      getAllReviews().then(
-          response => {
-              if (response.status === 200) {
-                  const find = response.data.find((item) => item?.id === id);
-                  dispatch(reviewByIDSuccess(
-                      find
-                  ));
-
-              }
-              else {
-                  dispatch(reviewByIDFailure(response?.data?.message || 'Login failed'));
-                  if (onError) {
-                      onError(response?.data?.message || 'Something Went Wrong')
-                  }
-              }
-          }, error => {
-              dispatch(reviewByIDFailure(error?.message || 'Login failed'));
-              if (onError) {
-                  onError(error?.message || 'Something Went Wrong')
-              }
-          }
-      )
-  }
 };

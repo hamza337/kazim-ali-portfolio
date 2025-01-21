@@ -83,10 +83,10 @@ export default function CSSAndPMSDetail() {
               </div>
               <CPFSection />
               <div className="main_content paddingTop">
-                <div className="heading-1" style={{"margin-bottom":'20px'}}>
+                <div className="heading-1" style={{"marginBottom":'20px'}} >
                   <ReactMarkdown>{selectedCSSPMS?.content?.slice(0,1200)}</ReactMarkdown>
                 </div>
-                <div className="cpf-button edina_tm_button">
+                <div className=" edina_tm_button">
                   <a
                     href={selectedCSSPMS?.essayLink}
                     className="color"

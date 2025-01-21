@@ -55,6 +55,8 @@ export default function Detail() {
     return format(new Date(dateString), "MMMM dd, yyyy, hh:mm a");
   };
 
+  console.log('check meta details ', selectedReviews)
+
     return (
         <div className="edina_tm_modalbox studentreviews">
             {

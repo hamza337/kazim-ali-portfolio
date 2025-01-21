@@ -60,9 +60,9 @@ body {
   display: flex;
 }
 
-#css-pms-details .edina_tm_modalbox .description_wrap .image .main, .edina_tm_modalbox .description_wrap .image .main{
-  border-radius: 10px;
-}
+// #css-pms-details .edina_tm_modalbox .description_wrap .image .main, .edina_tm_modalbox .description_wrap .image .main{
+//   border-radius: 10px;
+// }
 
 #css-pms-details .main_content .heading-1 h3 {
   color: #231F20;
@@ -1963,7 +1963,7 @@ body.dark .loader_line:after {
   position: relative;
   width: 100%;
   height: 100%;
-  float: left;
+  // float: left;
   overflow: hidden;
   padding: 50px;
   overflow-y: scroll;
@@ -2607,6 +2607,7 @@ body.dark .loader_line:after {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  border-radius: 0;
 }
 .edina_tm_modalbox.studentreviews .description_wrap .image .main {
   background-position: top;

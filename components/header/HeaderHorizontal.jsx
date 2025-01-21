@@ -86,50 +86,6 @@ const HeaderHorizontal = () => {
           </div>
           {/* End .logo */}
 
-          {/* <div className="menu"> */}
-
-            {/* <ScrollspyNav
-              scrollTargetIds={[
-                "home",
-                // "about",
-                // "service",
-                "courses",
-                // "testimonial",
-                // "studentreviews",
-                // "contact",
-              ]}
-              activeNavClass="active"
-              offset={-80}
-              scrollDuration="100"
-            > */}
-              {/* <ul className="anchor_nav">
-                {sidebarContent.map((val, i) => (
-                  <li key={i}>
-                    <div className="list_inner">
-
-
-                      <a
-                        href={val.itemRoute}
-                        className={val.activeClass}
-                        onClick={() => val.link === true ? router.push(val.itemRoute) : handleClick()}
-                      >
-                        <Image
-                          width={18}
-                          height={18}
-                          className="svg custom"
-                          src={`/img/svg/${val.icon}.svg`}
-                          alt="icon"
-                        />
-                        {val.itemName}
-                      </a>
-                    </div>
-                  </li>
-                ))}
-              </ul> */}
-              
-            {/* </ScrollspyNav> */}
-
-          {/* </div> */}
           <div className="menu">
             <ul className="anchor_nav" ref={dropdownRef}>
               {sidebarContent.map((val, i) => (

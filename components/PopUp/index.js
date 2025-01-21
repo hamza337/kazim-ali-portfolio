@@ -1,34 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetAllNEWSLETTER } from "../../redux/action";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import Image from "next/image";
-import { MdCancel, MdClose } from "react-icons/md";
-const { Modal, FormGroup, FormControl } = require("react-bootstrap");
+import { MdClose } from "react-icons/md";
+const { Modal } = require("react-bootstrap");
 const { useSelector, useDispatch } = require("react-redux");
 import logo from "../../public/img/logo/dark.png";
 import logo2 from "../../public/img/logo/light.png";
+import axios from "axios";
 const { Loader } = require("../../assets");
 
-export function PopUp(props) {
+export function PopUp({ show, setShow }) {
+    const [data, setData] = useState([]);
+    const baseUrl = 'http://localhost:1337/api';
+
+    const getPopupsData = async () => {
+        try{
+            const response = await axios.get(`${baseUrl}/popups?populate=*`);
+            setData(response.data.data);            
+        }catch(e){
+            console.error("Error loading popups");
+        }
+    }
+
+    useEffect(() => {
+        getPopupsData();
+    },[])
+
+    const randomIndex = (length) => { return Math.floor(Math.random() * length)}
+
     const newsLetter = useSelector((state) => state.newsLetter);
 
     return (
         <Modal
-            show={props.show}
+            show={show}
             size={"lg"}
             centered
             className="pop-up-modal news_modal_up"
-            onHide={() => { props.setShow(false) }}
+            onHide={() => setShow(false) }
         >
             <Modal.Body>
-                <PopUpBody {...props} />
+                <PopUpBody popup={data[randomIndex(data.length)]} setShow={setShow} />
             </Modal.Body>
         </Modal>
     );
 }
 
-function PopUpBody(props) {
+function PopUpBody({ popup, setShow }) {
+    const cmsUrl = 'http://localhost:1337';
+    console.log('data', popup)
     const newsLetter = useSelector((state) => state.newsLetter);
     const dispatch = useDispatch();
 
@@ -36,9 +57,11 @@ function PopUpBody(props) {
         dispatch(GetAllNEWSLETTER());
     }, [dispatch]);
 
-    if (!newsLetter.allNewsLetter) return <p>Loading...</p>;
+    const getARandomNumber = (length) => {
+        return Math.floor(Math.random() * length);
+    }
 
-    const sanitizedDescription = DOMPurify.sanitize(newsLetter?.allNewsLetter?.description || "");
+    if (!newsLetter.allNewsLetter) return <p>Loading...</p>;
 
     return (
         <div id="popup-newsletter">
@@ -48,7 +71,7 @@ function PopUpBody(props) {
                         <div
                             className="main pop-up-background-image"
                             style={{
-                                backgroundImage: `url(${newsLetter?.allNewsLetter.featuredImage})`,
+                                backgroundImage: `url(${cmsUrl}${popup?.coverImage?.url})`,
                             }}
                         ></div>
                     </div>
@@ -58,7 +81,7 @@ function PopUpBody(props) {
                             fontSize={36}
                             size={36}
                             className="modal-close-icon"
-                            onClick={() => props.setShow(false)} 
+                            onClick={() => setShow(false)} 
                         />
 
                         {/* Logo */}
@@ -85,29 +108,27 @@ function PopUpBody(props) {
                         <div className="news_content">
                             <div className="news_details">
                                 <h3 className="title mb-4">
-                                    {newsLetter?.allNewsLetter.title}
+                                    {popup?.title}
                                 </h3>
                             </div>
                             <div className="descriptions">
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: sanitizedDescription
-                                    }}
-                                />
+                                {popup?.content}
                             </div>
                         </div>
 
                         {/* Button */}
-                        <div className="cpf-button edina_tm_button">
-                            <a
-                                href={newsLetter?.allNewsLetter.buttonUrl}
-                                className="color"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {newsLetter?.allNewsLetter.buttonText}
-                            </a>
-                        </div>
+                        {popup?.showButton && 
+                            <div className="cpf-button edina_tm_button">
+                                <a
+                                    href={popup?.buttonLink}
+                                    className="color"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {popup?.buttonText}
+                                </a>
+                            </div> 
+                        }
                     </div>
                 </div>
             </div>

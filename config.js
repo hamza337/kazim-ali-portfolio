@@ -36,9 +36,6 @@ const APP_SETTINGS = {
         },
         CSSANDPMS: {
             getAll: baseUrl + 'css-and-pms-essays?populate=*',
-            add: baseUrl + 'pmsEssays',
-            update: baseUrl + 'pmsEssays',
-            delete: baseUrl + 'pmsEssays'
         },
         NEWSLETTER: {
             getAll: baseUrl + 'popups',

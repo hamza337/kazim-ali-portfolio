@@ -17,19 +17,19 @@ const EdinaHorizontalRtl = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // document.querySelector("body").classList.add("rtl");
+    document.querySelector("body").classList.add("rtl");
   }, []);
 
   const handleLabelClick = () => {
     if (isDark) {
       localStorage.setItem("theme-color", "theme-light");
-      // document.querySelector("body").classList.add("theme-light");
-      // document.querySelector("body").classList.remove("theme-dark");
+      document.querySelector("body").classList.add("theme-light");
+      document.querySelector("body").classList.remove("theme-dark");
       setIsDark(false);
     } else {
       localStorage.setItem("theme-color", "theme-dark");
-      // document.querySelector("body").classList.add("theme-dark");
-      // document.querySelector("body").classList.remove("theme-light");
+      document.querySelector("body").classList.add("theme-dark");
+      document.querySelector("body").classList.remove("theme-light");
       setIsDark(true);
     }
   };
