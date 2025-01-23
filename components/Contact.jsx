@@ -22,6 +22,7 @@ const Contact = () => {
       form.current.reset();
     } catch (error) {
       toast.error('Error Submitting Form');
+
     }
   }
 
