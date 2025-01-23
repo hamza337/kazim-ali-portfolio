@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const NationalCoursesList = () => {
   const router = useRouter();
   const review = useSelector((state) => state.review);
-  const cmsUrl = 'http://localhost:1337'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
     // Generate slug dynamically from the title
     const generateSlug = (title) => {
@@ -56,7 +56,7 @@ const NationalCoursesList = () => {
                     <div
                       className="main"
                       style={{
-                        backgroundImage: `url(${cmsUrl}${item.coverImage?.url})`,
+                        backgroundImage: `url(${baseUrl}${item.coverImage?.url})`,
                       }}
                     ></div>
                   </div>

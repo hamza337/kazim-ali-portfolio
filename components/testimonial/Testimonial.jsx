@@ -4,8 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Testimonial() {
-  const baseUrl = 'http://localhost:1337/api'
-  const cmsUrl = 'http://localhost:1337'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [data, setData] = useState([]);
   var settings = {
     dots: true,
@@ -29,7 +28,7 @@ export default function Testimonial() {
 
   const getTestimonials = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/testimonials?populate=*&sort[0]=createdAt:desc`)
+      const response = await axios.get(`${baseUrl}/api/testimonials?populate=*&sort[0]=createdAt:desc`)
       setData(response.data.data);
       console.log('testimonials', response.data.data);
     }
@@ -58,7 +57,7 @@ export default function Testimonial() {
                   <div
                     className="main"
                     style={{
-                      backgroundImage: `url(${cmsUrl}${val.image?.url})`,
+                      backgroundImage: `url(${baseUrl}${val.image?.url})`,
                     }}
                   ></div>
                 </div>

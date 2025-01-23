@@ -13,11 +13,11 @@ const { Loader } = require("../../assets");
 
 export function PopUp({ show, setShow }) {
     const [data, setData] = useState([]);
-    const baseUrl = 'http://localhost:1337/api';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const getPopupsData = async () => {
         try{
-            const response = await axios.get(`${baseUrl}/popups?populate=*`);
+            const response = await axios.get(`${baseUrl}/api/popups?populate=*`);
             setData(response.data.data);            
         }catch(e){
             console.error("Error loading popups");
@@ -48,8 +48,7 @@ export function PopUp({ show, setShow }) {
 }
 
 function PopUpBody({ popup, setShow }) {
-    const cmsUrl = 'http://localhost:1337';
-    console.log('data', popup)
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const newsLetter = useSelector((state) => state.newsLetter);
     const dispatch = useDispatch();
 
@@ -71,7 +70,7 @@ function PopUpBody({ popup, setShow }) {
                         <div
                             className="main pop-up-background-image"
                             style={{
-                                backgroundImage: `url(${cmsUrl}${popup?.coverImage?.url})`,
+                                backgroundImage: `url(${baseUrl}${popup?.coverImage?.url})`,
                             }}
                         ></div>
                     </div>

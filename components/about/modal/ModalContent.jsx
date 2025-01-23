@@ -7,11 +7,11 @@ import Feedback from "../Feedback";
 import axios from "axios";
 
 const ModalContent = () => {
-  const baseUrl = 'http://localhost:1337/api';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [data, setData] = useState({});
   const getData = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/me?populate=*`)
+      const response = await axios.get(`${baseUrl}/api/me?populate=*`)
       setData(response.data.data);
     }catch (err) {
       console.error(err);

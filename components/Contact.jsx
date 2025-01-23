@@ -5,12 +5,12 @@ import axios from 'axios';
 
 const Contact = () => {
   const form = useRef();
-  const baseUrl = 'http://localhost:1337/api'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`${baseUrl}/contacts`,{
+      await axios.post(`${baseUrl}/api/contacts`,{
         data:{
           name: form.current.name.value,
           email: form.current.email.value,

@@ -13,7 +13,7 @@ export default function Detail() {
     const { slug } = router.query; // Slug from the URL
     const dispatch = useDispatch();
     const review = useSelector((state) => state.review);
-    const cmsUrl = 'http://localhost:1337'
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const onError = (errorMessage) => {
         toast.error(errorMessage, {
@@ -71,7 +71,7 @@ export default function Detail() {
                                     <div
                                         className="main"
                                         style={{
-                                            backgroundImage: `url(${cmsUrl}${selectedReviews?.blogImage?.url})`,
+                                            backgroundImage: `url(${baseUrl}${selectedReviews?.blogImage?.url})`,
                                         }}
                                     ></div>
                                 </div>

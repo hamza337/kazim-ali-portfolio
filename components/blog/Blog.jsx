@@ -9,8 +9,7 @@ import axios from "axios";
 Modal.setAppElement("#__next");
 
 const Blog = () => {
-  const baseUrl = "http://localhost:1337/api";
-  const cmsUrl = "http://localhost:1337";
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [data, setData] = useState([]);
   var settings = {
     dots: false,
@@ -48,7 +47,7 @@ const Blog = () => {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/student-reviews?populate=*&sort[0]=createdAt:desc`)
+      const response = await axios.get(`${baseUrl}/api/student-reviews?populate=*&sort[0]=createdAt:desc`)
       setData(response.data.data);
     } catch (err) {
       console.error(err);
@@ -85,7 +84,7 @@ const Blog = () => {
                       <div
                         className="main"
                         style={{
-                          backgroundImage: `url(${cmsUrl}${item.reviewerImage?.url})`,
+                          backgroundImage: `url(${baseUrl}${item.reviewerImage?.url})`,
                         }}
                       ></div>
                     </div>

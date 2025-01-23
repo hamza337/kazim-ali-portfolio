@@ -12,7 +12,7 @@ import ReactMarkdown from "react-markdown";
 export default function CSSAndPMSDetail() {
   const router = useRouter();
   const { slug } = router.query; // Slug from the URL
-  const cmsUrl = 'http://localhost:1337'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const dispatch = useDispatch();
   const cssAndPms = useSelector((state) => state.cssAndPms);
 
@@ -74,7 +74,7 @@ export default function CSSAndPMSDetail() {
                 <div
                   className="main"
                   style={{
-                    backgroundImage: `url(${cmsUrl}${selectedCSSPMS?.coverImage?.url})`,
+                    backgroundImage: `url(${baseUrl}${selectedCSSPMS?.coverImage?.url})`,
                   }}
                 ></div>
               </div>

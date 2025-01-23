@@ -1,56 +1,53 @@
 
 const PAGE_LIMIT = 10;
-const baseUrl = "http://localhost:1337/api/";
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 const contactUrl = "https://teachpro.somee.com/";
 const APP_SETTINGS = {
     API_PATH: {
         AUTH: {
-            login: baseUrl + "auth/Login",
+            login: baseUrl + "/api/auth/Login",
         },
         CATEGORIES: {
-            getAll: baseUrl + 'categories',
-            add: baseUrl + 'categories',
-            update: baseUrl + 'categories',
-            delete: baseUrl + 'categories'
+            getAll: baseUrl + '/api/categories',
+            add: baseUrl + '/api/categories',
+            update: baseUrl + '/api/categories',
+            delete: baseUrl + '/api/categories'
         },
         REVIEWS: {
-            getAll: baseUrl + 'student-reviews?populate=*',
-            add: baseUrl + 'reviews',
-            update: baseUrl + 'reviews',
-            delete: baseUrl + 'reviews'
+            getAll: baseUrl + '/api/student-reviews?populate=*',
         },
         NATIONALCOURSES: {
-            getAll: baseUrl + 'courses?populate=*',
+            getAll: baseUrl + '/api/courses?populate=*',
         },
         INTERNATIONALCOURSES: {
-            getAll: baseUrl + 'international-courses?populate=*',
+            getAll: baseUrl + '/api/international-courses?populate=*',
         },
         BLOGS: {
-            getAll: baseUrl + 'blogs?populate=*',
+            getAll: baseUrl + '/api/blogs?populate=*',
         },
         SERVICES: {
-            getAll: baseUrl + 'services',
-            add: baseUrl + 'services',
-            update: baseUrl + 'services',
-            delete: baseUrl + 'services'
+            getAll: baseUrl + '/api/services',
+            add: baseUrl + '/api/services',
+            update: baseUrl + '/api/services',
+            delete: baseUrl + '/api/services'
         },
         CSSANDPMS: {
-            getAll: baseUrl + 'css-and-pms-essays?populate=*',
+            getAll: baseUrl + '/api/css-and-pms-essays?populate=*',
         },
         NEWSLETTER: {
-            getAll: baseUrl + 'popups',
-            update: baseUrl + 'popups',
+            getAll: baseUrl + '/api/popups',
+            update: baseUrl + '/api/popups',
         },
         LOOKUPS: {
-            getAll: baseUrl + 'lookups',
-            update: baseUrl + 'lookups'
+            getAll: baseUrl + '/api/lookups',
+            update: baseUrl + '/api/lookups'
         },
     }
 };
 const CONTACTUS = {
     CONTACT_PATH: {
         CONTACT: {
-            send: contactUrl + 'contactus',
+            send: contactUrl + '/api/contactus',
         }
 
     },

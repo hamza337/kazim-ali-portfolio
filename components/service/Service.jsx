@@ -8,7 +8,7 @@ Modal.setAppElement("#__next");
 
 const Service = ({apiRoute, path}) => {
   const [courses, setCourses] = useState([]);
-  const baseUrl = 'http://localhost:1337/api'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 
   // Generate slug dynamically from the title
@@ -21,7 +21,7 @@ const Service = ({apiRoute, path}) => {
 
   const getAllInternationalCourses = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/${apiRoute}?populate=*&sort[0]=createdAt:desc`)
+      const response = await axios.get(`${baseUrl}/api/${apiRoute}?populate=*&sort[0]=createdAt:desc`)
       setCourses(response?.data.data);
     } catch (err) {
       console.error('Error Fetching Data');

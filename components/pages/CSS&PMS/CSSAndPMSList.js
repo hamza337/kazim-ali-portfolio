@@ -7,7 +7,7 @@ import DOMPurify from "dompurify";
 const CSSAndPMSList = () => {
     const router = useRouter();
     const cssAndPms = useSelector((state) => state.cssAndPms);
-    const cmsUrl = 'http://localhost:1337'
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   
       // Generate slug dynamically from the title
   const generateSlug = (title) => {
@@ -47,7 +47,7 @@ const CSSAndPMSList = () => {
                                         <div
                                             className="main"
                                             style={{
-                                                backgroundImage: `url(${cmsUrl}${item?.coverImage?.url})`,
+                                                backgroundImage: `url(${baseUrl}${item?.coverImage?.url})`,
                                             }}
                                         ></div>
                                     </div>
