@@ -30,7 +30,6 @@ export default function Testimonial() {
     try {
       const response = await axios.get(`${baseUrl}/api/testimonials?populate=*&sort[0]=createdAt:desc`)
       setData(response.data.data);
-      console.log('testimonials', response.data.data);
     }
     catch (err) {
       console.error(err);

@@ -62,7 +62,7 @@ const AddCSSAndPMS = () => {
         });
         document.getElementB
     }
-    console.log("cssAndPms", cssAndPms)
+
     useEffect(() => {
         if (id !== 'new') {
             if (cssAndPms.cssAndPmsByID) {
@@ -71,9 +71,6 @@ const AddCSSAndPMS = () => {
                 reset(cssAndPms.cssAndPmsByID)
                 urlToFile(data.featuredImage)
                     .then(file => {
-
-                        // let file_ = e.target.files[0];
-                        // console.log(file_,"sdsdsdsd", file)
                         if (file) {
                             setImage(file)
                         }

@@ -89,11 +89,15 @@ const HeaderHorizontal = () => {
           <div className="menu">
             <ul className="anchor_nav" ref={dropdownRef}>
               {sidebarContent.map((val, i) => (
-                // <li key={i} className="position-relative">
                 <li
                   key={i}
                   className={`menu-item ${val.subItems ? "has-dropdown" : ""} ${
                     activeDropdown === val.itemName ? "open" : ""
+                  } ${
+                    router.pathname === val.itemRoute ||
+                    (val.subItems && val.subItems.some((sub) => sub.itemRoute === router.pathname))
+                      ? "active"
+                      : ""
                   }`}
                 >
                   <div 
@@ -109,7 +113,7 @@ const HeaderHorizontal = () => {
                   >
                     <a
                       href={val.link ? val.itemRoute : "#"}
-                      className={val.activeClass}
+                      className={router.pathname === val.itemRoute ? "active" : ""}
                       onClick={val.link ? () => router.push(val.itemRoute) : undefined}
                     >
                       <Image

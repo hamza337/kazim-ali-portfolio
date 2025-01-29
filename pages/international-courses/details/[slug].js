@@ -30,9 +30,7 @@ const index = () => {
   useEffect(() => {
     if (!review.allReviews.length) {
       dispatch(GetAllInterationalCourses());
-      console.log('second', review.allReviews.length, review )
     } else if (slug) {
-        console.log('hello')
       const selectedCourse = review.allReviews.find(
         (item) => generateSlug(item.title) === slug
       );

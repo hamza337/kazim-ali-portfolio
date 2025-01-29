@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Seo from "../../components/Seo";
 import Reviews from "../../components/pages/reviews";
 import ParentHOC from "../../components/ParentHOC";
 import theimage from "../../public/img/hero/kazim.jpg"

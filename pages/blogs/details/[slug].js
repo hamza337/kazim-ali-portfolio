@@ -13,9 +13,9 @@ const BlogDetailPage = () => {
   const dispatch = useDispatch();
   const review = useSelector((state) => state.review);
   const [metaData, setMetaData] = useState({
-    pageTitle: "Loading...",
-    description: "Loading...",
-    keywords: "loading",
+    pageTitle: "",
+    description: "",
+    keywords: "",
     image: null,
   });
 
@@ -35,12 +35,12 @@ const BlogDetailPage = () => {
       );
 
       if (selectedBlog) {
-            setMetaData({
-                pageTitle: selectedBlog.metaTitle,
-                description: selectedBlog.metaDescription || "Blog details, Sir Kazim Blog",
-                keywords: selectedBlog.metaKeywords || "blog, full blog, article, insights",
-                image: theimage || null,
-            });
+        setMetaData({
+          pageTitle: selectedBlog.metaTitle || selectedBlog.title,
+          description: selectedBlog.metaDescription || "Blog detail, Read Sir Kazim Blog",
+          keywords: selectedBlog.metaKeywords || "blog, sir kazim blogs, css blogs, pms blogs, css and pms blogs, article, insights",
+          image: theimage || null,
+        });
       }
     }
   }, [dispatch, slug]);

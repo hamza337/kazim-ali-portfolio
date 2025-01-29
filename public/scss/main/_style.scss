@@ -2158,6 +2158,7 @@ body.dark .loader_line:after {
   .my_carousel ul li .image {
     @media screen and (max-width: 1900px) {
       height: 235px;
+      border-radius: 10px 10px 0 0;
     }
 
     @media screen and (max-width: 1500px) {
@@ -4779,4 +4780,11 @@ a {
       justify-content: flex-start; // Align divs to the left on small screens.
     }
   }
+}
+
+.menu-item.has-dropdown.active > .list_inner {
+  background-color: #f5f5f5 !important;
+  color: #000 !important;
+  font-weight: bold;
+  border-radius: 5px;
 }

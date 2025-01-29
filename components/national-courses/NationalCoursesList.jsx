@@ -25,8 +25,6 @@ const NationalCoursesList = () => {
     return <p className="text-center">Loading reviews...</p>;
   }
 
-  console.log('first', filteredReviews)
-
   return (
     <div className="news_inner my_carousel review_list">
       <ul>
@@ -63,7 +61,7 @@ const NationalCoursesList = () => {
 
                   <div className="news_details">
                     <span>
-                      {item?.duration}{" "}USD{" "}{item?.courseFee}
+                      {item?.duration}{" "}<b>PKR{" "}{item?.courseFee}</b>
                     </span>
                     <h3
                       className="title"

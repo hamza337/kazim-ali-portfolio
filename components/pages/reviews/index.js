@@ -6,7 +6,6 @@ import { GetAllReviews } from "../../../redux/action/reviews"; // Import your ac
 const Reviews = () => {
   const dispatch = useDispatch();
   const reviewsLoaded = useSelector((state) => state.review.reviewsLoaded);
-  console.log('second', reviewsLoaded);
 
   // Fetch reviews when the component mounts
   useEffect(() => {

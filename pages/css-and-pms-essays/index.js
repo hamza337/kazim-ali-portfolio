@@ -5,8 +5,8 @@ import theimage from "../../public/img/hero/kazim.jpg"
 
 const index = () => {
     const pageTitle = "CSS AND PMS ESSAYS PAGE";
-    const description = "Read what our students have to say about their experience with our coaching services.";
-    const keywords = "student reviews, coaching, essay writing";
+    const description = "Access high-quality CSS and PMS essays to enhance your preparation. Learn from expertly crafted essays covering diverse topics.";
+    const keywords = "CSS essays, PMS essays, competitive exam preparation, essay writing, CSS past papers, PMS past papers";
     const image = theimage; 
     return (
         <ParentHOC authorizedIgnored={true}  pageTitle={pageTitle} description={description} keywords={keywords} image={image}>

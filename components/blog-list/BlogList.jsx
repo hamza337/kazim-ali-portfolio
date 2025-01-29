@@ -25,8 +25,6 @@ const BlogList = () => {
     return <p className="text-center">Loading reviews...</p>;
   }
 
-  console.log('first', filteredBlogs)
-
   return (
     <div className="news_inner my_carousel review_list">
       <ul>

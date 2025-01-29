@@ -11,12 +11,11 @@ const index = () => {
   const router = useRouter();
   const { slug } = router.query;
   const dispatch = useDispatch();
-  const review = useSelector((state) => state.review);
   const cssAndPms = useSelector((state) => state.cssAndPms);
   const [metaData, setMetaData] = useState({
-    pageTitle: "Loading...",
-    description: "Loading...",
-    keywords: "loading",
+    pageTitle: "",
+    description: "",
+    keywords: "",
     image: theimage,
   });
 
@@ -26,7 +25,6 @@ const index = () => {
       .replace(/ /g, "-")
       .replace(/[^\w-]+/g, "");
   };
-  console.log('check kr hehe', cssAndPms)
 
   useEffect(() => {
     if (!cssAndPms.allCssAndPms.length) {
@@ -37,12 +35,12 @@ const index = () => {
       );
 
       if (selectedCourse) {
-            setMetaData({
-                pageTitle: selectedCourse.metaTitle,
-                description: selectedCourse.metaDescription || "Blog details, Sir Kazim Blog",
-                keywords: selectedCourse.metaKeywords || "blog, full blog, article, insights",
-                image: theimage || null,
-            });
+        setMetaData({
+          pageTitle: selectedCourse.metaTitle || selectedCourse.title,
+          description: selectedCourse.metaDescription || "Sir Kazim Css & Pms Essay detail, Read Sir Kazim Essay",
+          keywords: selectedCourse.metaKeywords || "Css and Pms Essay, Sir Kazim Essays, Sir Kazim Css writings",
+          image: theimage || null,
+        });
       }
     }
   }, [dispatch, slug]);

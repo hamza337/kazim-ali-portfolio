@@ -36,9 +36,6 @@ const NationalService = () => {
     dispatch(GetAllServices(onError)); // Fetch all services
   }, []);
 
-//   console.log('Slug from URL:', slug); // Check the slug from the URL
-// console.log('All Services:', service.allServices); // Check all fetched services
-
   // Find the service based on the slug
   const selectedService = service.allServices.find(
     (item) => generateSlug(item.title) === slug

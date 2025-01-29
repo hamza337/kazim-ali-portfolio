@@ -4,9 +4,9 @@ import theimage from "../../public/img/hero/kazim.jpg"
 import MyNationalCourses from "../../components/pages/my-national-courses";
 
 const index = () => {
-    const pageTitle = "Student Review Page";
-    const description = "Read what our students have to say about their experience with our coaching services.";
-    const keywords = "student reviews, coaching, essay writing";
+    const pageTitle = "National Courses";
+    const description = "Explore sir kazim's national courses for CSS, PMS, and other competitive exams. Get expert guidance and structured preparation to achieve success.";
+    const keywords = "sir kazim national courses, CSS preparation, PMS coaching, competitive exams, test preparation, online coaching";
     const image = theimage; 
 
     return (

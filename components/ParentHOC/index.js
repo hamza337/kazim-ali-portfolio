@@ -20,13 +20,11 @@ const ParentHOC = ({ children, ...rest }) => {
 
     const handleLabelClick = () => {
         if (isDark) {
-            console.log('dark')
             localStorage.setItem("theme-color", "theme-light");
             document.querySelector("body").classList.add("theme-light");
             document.querySelector("body").classList.remove("theme-dark");
             setIsDark(false);
         } else {
-            console.log('light')
             localStorage.setItem("theme-color", "theme-dark");
             document.querySelector("body").classList.add("theme-dark");
             document.querySelector("body").classList.remove("theme-light");

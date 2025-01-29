@@ -14,9 +14,9 @@ const index = () => {
   const dispatch = useDispatch();
   const review = useSelector((state) => state.review);
   const [metaData, setMetaData] = useState({
-    pageTitle: "Loading...",
-    description: "Loading...",
-    keywords: "loading",
+    pageTitle: "",
+    description: "",
+    keywords: "",
     image: null,
   });
 
@@ -37,7 +37,7 @@ const index = () => {
 
       if (selectedCourse) {
             setMetaData({
-                pageTitle: selectedCourse.metaTitle,
+                pageTitle: selectedCourse.metaTitle || selectedCourse.title,
                 description: selectedCourse.metaDescription || "Blog details, Sir Kazim Blog",
                 keywords: selectedCourse.metaKeywords || "blog, full blog, article, insights",
                 image: theimage || null,

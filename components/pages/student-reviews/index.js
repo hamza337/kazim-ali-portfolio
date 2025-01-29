@@ -96,7 +96,6 @@ const StudentReviews = () => {
                                         <tbody className="table-border-bottom-0">
                                             {
                                                 review.allReviews.map((item, index) => {
-                                                    console.log("AllReveiwsdata", item)
                                                     const sanitizedDescription = DOMPurify.sanitize(item?.description || "");
                                                     return (
                                                         <tr key={index}

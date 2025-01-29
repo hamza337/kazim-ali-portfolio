@@ -14,9 +14,9 @@ const index = () => {
   const dispatch = useDispatch();
   const review = useSelector((state) => state.review);
   const [metaData, setMetaData] = useState({
-    pageTitle: "Loading...",
-    description: "Loading...",
-    keywords: "loading",
+    pageTitle: "",
+    description: "",
+    keywords: "",
     image: theimage,
   });
 
@@ -36,12 +36,12 @@ const index = () => {
       );
 
       if (selectedCourse) {
-            setMetaData({
-                pageTitle: selectedCourse.metaTitle,
-                description: selectedCourse.metaDescription || "Blog details, Sir Kazim Blog",
-                keywords: selectedCourse.metaKeywords || "blog, full blog, article, insights",
-                image: theimage || null,
-            });
+        setMetaData({
+            pageTitle: selectedCourse.metaTitle || selectedCourse.title,
+            description: selectedCourse.metaDescription || "Sir Kazim's Students Remarks",
+            keywords: selectedCourse.metaKeywords || "sir kazim students remarks, sir kazim reviews, sir kazim ali reviews, sir kazim ali feedbacks",
+            image: theimage || null,
+        });
       }
     }
   }, [dispatch, slug]);
