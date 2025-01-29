@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import ReviewList from "../../review-list/ReviewList";
 import BlogList from "../../blog-list/BlogList";
-
-import { GetAllBlogs } from "../../../redux/action/blogs"; // Import your action to fetch reviews
+import { GetAllBlogs } from "../../../redux/action/blogs";
 
 const MyBlogs = () => {
   const dispatch = useDispatch();
@@ -23,21 +21,16 @@ const MyBlogs = () => {
           <div className="layout-page">
             <div className="edina_tm_news" id="studentreviews">
               <div className="container">
-
-              <div className="about_title">
-                                        <h3 >Unlock Success with Sir Kazim’s Expert Insights</h3>
-                                    </div>
-                                    <div className="content">
-                                        <div className="info">
-                                            <p>
-                                         
-                                            Stay informed and inspired with Sir Kazim’s insightful blogs, where he shares his expertise on CSS and PMS exam strategies, professional English writing techniques, and career-building tips. With regular posts tailored to guide and motivate students, these blogs offer valuable knowledge and practical advice to help you excel in academics, competitive exams, and beyond. Dive into Sir Kazim’s world of wisdom and transform your learning journey today.
-
-
-                                            </p>
-                                        </div>
-                                    </div>
-
+                <div className="about_title">
+                  <h3 >Unlock Success with Sir Kazim’s Expert Insights</h3>
+                </div>
+                <div className="content">
+                  <div className="info">
+                    <p>
+                      Stay informed and inspired with Sir Kazim’s insightful blogs, where he shares his expertise on CSS and PMS exam strategies, professional English writing techniques, and career-building tips. With regular posts tailored to guide and motivate students, these blogs offer valuable knowledge and practical advice to help you excel in academics, competitive exams, and beyond. Dive into Sir Kazim’s world of wisdom and transform your learning journey today.
+                    </p>
+                  </div>
+                </div>
                 <BlogList />
               </div>
             </div>

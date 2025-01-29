@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 export default function CSSAndPMSDetail() {
   const router = useRouter();
@@ -84,7 +85,7 @@ export default function CSSAndPMSDetail() {
               <CPFSection />
               <div className="main_content paddingTop">
                 <div className="heading-1" style={{"marginBottom":'20px'}} >
-                  <ReactMarkdown>{selectedCSSPMS?.content?.slice(0,1200)}</ReactMarkdown>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedCSSPMS?.content}</ReactMarkdown>
                 </div>
                 <div className=" edina_tm_button">
                   <a

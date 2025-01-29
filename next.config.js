@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     domains: ['i.ibb.co'], 
   },
-  output: 'export',
   images: {
     unoptimized: true,
   },

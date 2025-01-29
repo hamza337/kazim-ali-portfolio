@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from "dompurify";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 export default function Detail() {
     const router = useRouter();
@@ -85,12 +87,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        {/* Rendering sanitized HTML using dangerouslySetInnerHTML */}
-                                        <div
-                                            dangerouslySetInnerHTML={{
-                                                __html: selectedReviews?.content
-                                            }}
-                                        />
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 

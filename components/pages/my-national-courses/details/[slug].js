@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { format } from "date-fns";
 import { GetAllNationalCourses } from "../../../../redux/action/nationalCourses";
 
@@ -121,7 +122,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown>{selectedReviews?.courseOutline}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.courseOutline}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 

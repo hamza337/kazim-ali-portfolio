@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { GetAllNEWSLETTER } from "../../redux/action";
-import DOMPurify from "dompurify";
 import Link from "next/link";
 import Image from "next/image";
 import { MdClose } from "react-icons/md";
@@ -9,7 +8,6 @@ const { useSelector, useDispatch } = require("react-redux");
 import logo from "../../public/img/logo/dark.png";
 import logo2 from "../../public/img/logo/light.png";
 import axios from "axios";
-const { Loader } = require("../../assets");
 
 export function PopUp({ show, setShow }) {
     const [data, setData] = useState([]);
@@ -84,24 +82,26 @@ function PopUpBody({ popup, setShow }) {
                         />
 
                         {/* Logo */}
-                        <div className="logo modal_logo">
-                            <Link href="/">
-                                <Image
-                                    width={100}
-                                    height={33}
-                                    className="logo_light"
-                                    src={logo}
-                                    alt="brand"
-                                />
-                                <Image
-                                    width={100}
-                                    height={33}
-                                    className="logo_dark"
-                                    src={logo2}
-                                    alt="brand"
-                                />
-                            </Link>
-                        </div>
+                        {popup?.showLogo && 
+                            <div className="logo modal_logo">
+                                <Link href="/">
+                                    <Image
+                                        width={100}
+                                        height={33}
+                                        className="logo_light"
+                                        src={logo}
+                                        alt="brand"
+                                    />
+                                    <Image
+                                        width={100}
+                                        height={33}
+                                        className="logo_dark"
+                                        src={logo2}
+                                        alt="brand"
+                                    />
+                                </Link>
+                            </div>
+                        }
 
                         {/* Content */}
                         <div className="news_content">
