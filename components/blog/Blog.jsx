@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import Slider from "react-slick";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { removeTags } from "../../assets";
 import axios from "axios";
-
+import Image from "next/image";
 Modal.setAppElement("#__next");
 
 const Blog = () => {
@@ -24,7 +22,7 @@ const Blog = () => {
       {
         breakpoint: 575,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           arrow: false,
           autoplay: false,
           speed: 300,
@@ -36,7 +34,6 @@ const Blog = () => {
   };
 
   const router = useRouter();
-  const review = useSelector((state) => state.review);
       // Generate slug dynamically from the title
       const generateSlug = (title) => {
         return title
@@ -47,7 +44,7 @@ const Blog = () => {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/student-reviews?populate=*&sort[0]=createdAt:desc`)
+      const response = await axios.get(`${baseUrl}/api/student-reviews?populate=*&sort[0]=createdAt:asc`)
       setData(response.data.data);
     } catch (err) {
       console.error(err);
@@ -75,27 +72,30 @@ const Blog = () => {
                   data-aos-delay="150"
                 >
                   <div className="list_inner">
-                    <div
-                      className="image"
+                    <div 
+                      className="cover-container"
                       onClick={() => {
                         router.push(`/student-reviews/details/${slug}`);
                       }}
                     >
-                      <div
-                        className="main"
-                        style={{
-                          backgroundImage: `url(${baseUrl}${item.reviewerImage?.url})`,
-                        }}
-                      ></div>
+                      <Image
+                        src={`${baseUrl}${item?.reviewerImage?.url}`}
+                        alt={'blog Image'}
+                        layout="responsive"
+                        width={1170}
+                        height={610}
+                        className="cover-image"
+                        priority
+                      />
                     </div>
 
                     <div className="news_details">
                       <span>
-                        {item.reviewerName}{" "}
-                        <a href="#!">
-                          {item.reviewerDesignation ? removeTags(item.reviewerDesignation) : "_"}
-                        </a>
+                        {item.reviewerName ? item.reviewerName : ""}{" "}
                       </span>
+                      <p>
+                        {item.reviewerDesignation ? item.reviewerDesignation : ""}
+                      </p>
                       <h3
                         className="title"
                         onClick={() => {

@@ -62,23 +62,23 @@ export default function CSSAndPMSDetail() {
     return <div className='mb-4 mt-4 py-4 text-center'><Loader /></div>;
   }
 
-  const sanitizedDescription = DOMPurify.sanitize(selectedCSSPMS?.description || "");
-  const sanitizedContent = DOMPurify.sanitize(selectedCSSPMS?.content || "");
-
   return (
     <div id="css-pms-details">
       <div className="edina_tm_modalbox">
         <div className="container">
           <div className="box_inner">
             <div className="description_wrap scrollable">
-              <div className="image">
-                <div
-                  className="main"
-                  style={{
-                    backgroundImage: `url(${baseUrl}${selectedCSSPMS?.coverImage?.url})`,
-                  }}
-                ></div>
-              </div>
+              <div className="cover-container">
+                <Image
+                  src={`${baseUrl}${selectedCSSPMS?.coverImage?.url}`}
+                  alt={'blog Image'}
+                  layout="responsive"
+                  width={1170}
+                  height={610}
+                  className="cover-image"
+                  priority
+                />
+            </div>
               <div className="news_details paddingTop">
                 <h3 className="title">{selectedCSSPMS?.title}</h3>
               </div>

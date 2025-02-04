@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { removeTags, truncateString } from "../../../assets";
 import DOMPurify from "dompurify";
+import Image from "next/image";
 
 const CSSAndPMSList = () => {
     const router = useRouter();
@@ -39,17 +40,21 @@ const CSSAndPMSList = () => {
                                 data-aos-duration="1200"
                                 data-aos-delay="150">
                                 <div className="card list_inner">
-                                    <div
-                                        className="image"
+                                    <div 
+                                        className="cover-container"
                                         onClick={() => {
-                                            router.push(`/css-and-pms-essays/details/${slug}`);
-                                        }} >
-                                        <div
-                                            className="main"
-                                            style={{
-                                                backgroundImage: `url(${baseUrl}${item?.coverImage?.url})`,
-                                            }}
-                                        ></div>
+                                        router.push(`/national-courses/details/${slug}`);
+                                        }}
+                                    >
+                                        <Image
+                                        src={`${baseUrl}${item?.coverImage?.url}`}
+                                        alt={'National Course Image'}
+                                        layout="responsive"
+                                        width={1170}
+                                        height={610}
+                                        className="cover-image"
+                                        priority
+                                        />
                                     </div>
                                     <div className="title-description">
                                         <div className="news_details">

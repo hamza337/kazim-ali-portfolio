@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const NationalCoursesList = () => {
   const router = useRouter();
@@ -30,11 +31,6 @@ const NationalCoursesList = () => {
       <ul>
         {filteredReviews.length > 0 &&
           filteredReviews.map((item) => {
-            const formattedDate = new Date(item.postedDate).toLocaleDateString("en-US", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            });
             const slug = generateSlug(item.title); // Generate slug from title
 
             return (
@@ -45,23 +41,27 @@ const NationalCoursesList = () => {
                 data-aos-delay="150"
               >
                 <div className="list_inner">
-                  <div
-                    className="image"
+                  <div 
+                    className="cover-container"
                     onClick={() => {
                       router.push(`/national-courses/details/${slug}`);
                     }}
                   >
-                    <div
-                      className="main"
-                      style={{
-                        backgroundImage: `url(${baseUrl}${item.coverImage?.url})`,
-                      }}
-                    ></div>
+                    {item?.coverImage?.url ? 
+                    <Image
+                      src={`${baseUrl}${item?.coverImage?.url}`}
+                      alt={'National Course Image'}
+                      layout="responsive"
+                      width={1170}
+                      height={610}
+                      className="cover-image"
+                      priority
+                    />
+                    : <div>No Image Found</div> }
                   </div>
-
                   <div className="news_details">
                     <span>
-                      {item?.duration}{" "}<b>PKR{" "}{item?.courseFee}</b>
+                      {item?.duration}{" "}{" "}{item?.courseFee}
                     </span>
                     <h3
                       className="title"

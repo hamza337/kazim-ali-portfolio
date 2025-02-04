@@ -324,7 +324,7 @@ body {
   border-radius: 10px;
   min-height: 400px;
   max-height: 400px;
-  border: 1px solid #E5E7EB;
+  border: none !important;
   box-shadow: 0px 2px 50px -2px #00000005;
   background: transparent;
 }
@@ -2534,11 +2534,16 @@ body.dark .loader_line:after {
   float: left;
   padding-top: 9px;
 }
+//custom CSS ALi Hamza
+.edina_tm_news ul li .news_details p {
+  color: #7e7e7e;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
 
 .edina_tm_news ul li .news_details span {
   font-size: 16px;
   display: inline-block;
-  padding-bottom: 5px;
   color: #7e7e7e;
 }
 
@@ -2615,6 +2620,33 @@ body.dark .loader_line:after {
   background-size: cover;
   border-radius: 0;
 }
+
+.edina_tm_modalbox .description_wrap .cover-container {
+  width: 100%;
+  max-width: 1170px;
+
+  .cover-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1170 / 610;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.popup-cover-container {
+  width: 100%;
+  max-width: 350px;
+
+  .popup-cover-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 7 / 12;
+    object-fit: cover;
+  }
+}
+
 .edina_tm_modalbox.studentreviews .description_wrap .image .main {
   background-position: top;
 }

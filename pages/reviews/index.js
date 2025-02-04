@@ -10,10 +10,9 @@ const index = () => {
     const image = theimage; 
 
     return (
-<ParentHOC authorizedIgnored={true} pageTitle={pageTitle} description={description} keywords={keywords} image={image}>
-    <Reviews />
-</ParentHOC>
-          
+        <ParentHOC authorizedIgnored={true} pageTitle={pageTitle} description={description} keywords={keywords} image={image}>
+            <Reviews />
+        </ParentHOC>
     );
 };
 

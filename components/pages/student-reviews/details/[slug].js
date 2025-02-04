@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import Image from "next/image";
 
 export default function Detail() {
     const router = useRouter();
@@ -52,8 +53,6 @@ export default function Detail() {
     return <div className='mb-4 mt-4 py-4 text-center align-items-center justify-center'>    <Loader /> </div>;
   }
 
-    const sanitizedDescription = DOMPurify.sanitize(selectedReviews?.description || "");
-
     return (
         <div className="edina_tm_modalbox studentreviews">
             {
@@ -64,13 +63,16 @@ export default function Detail() {
                     <div className="container">
                         <div className="box_inner">
                             <div className="description_wrap scrollable">
-                                <div className="image">
-                                    <div
-                                        className="main"
-                                        style={{
-                                            backgroundImage: `url(${baseUrl}${selectedReviews?.coverImage?.url})`,
-                                        }}
-                                    ></div>
+                                <div className="cover-container">
+                                    <Image
+                                        src={`${baseUrl}${selectedReviews?.coverImage?.url}`}
+                                        alt={'blog Image'}
+                                        layout="responsive"
+                                        width={1170}
+                                        height={610}
+                                        className="cover-image"
+                                        priority
+                                    />
                                 </div>
                                 <div className="news_details">
                                     <span>

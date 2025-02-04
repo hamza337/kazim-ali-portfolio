@@ -28,10 +28,9 @@ export function PopUp({ show, setShow }) {
 
     const randomIndex = (length) => { return Math.floor(Math.random() * length)}
 
-    const newsLetter = useSelector((state) => state.newsLetter);
-
     return (
-        <Modal
+        <>
+        {data.length > 0 && <Modal
             show={show}
             size={"lg"}
             centered
@@ -41,7 +40,8 @@ export function PopUp({ show, setShow }) {
             <Modal.Body>
                 <PopUpBody popup={data[randomIndex(data.length)]} setShow={setShow} />
             </Modal.Body>
-        </Modal>
+        </Modal>}
+        </>
     );
 }
 
@@ -54,23 +54,30 @@ function PopUpBody({ popup, setShow }) {
         dispatch(GetAllNEWSLETTER());
     }, [dispatch]);
 
-    const getARandomNumber = (length) => {
-        return Math.floor(Math.random() * length);
-    }
-
     if (!newsLetter.allNewsLetter) return <p>Loading...</p>;
 
     return (
         <div id="popup-newsletter">
             <div className="box_inner">
                 <div className="description_wrap scrollable d-flex">
-                    <div className="image news_image">
+                    {/* <div className="image news_image">
                         <div
                             className="main pop-up-background-image"
                             style={{
                                 backgroundImage: `url(${baseUrl}${popup?.coverImage?.url})`,
                             }}
                         ></div>
+                    </div> */}
+                    <div className="popup-cover-container">
+                        <Image
+                            src={`${baseUrl}${popup?.coverImage?.url}`}
+                            alt={'popup Image'}
+                            layout="responsive"
+                            width={350}
+                            height={60}
+                            className="popup-cover-image"
+                            priority
+                        />
                     </div>
                     <div className="pop-up-title title-description">
                         {/* Close button */}

@@ -420,3 +420,10 @@ body.intro .loader_line:after {
 .theme-dark .modal-content{
   background-color:#020713;
 }
+
+.theme-dark .menu-item.has-dropdown.active > .list_inner {
+  background-color: #191c26 !important;
+}
+.theme-dark .menu-item.active > .list_inner {
+  background-color: #191c26 !important;
+}

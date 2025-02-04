@@ -8,6 +8,7 @@ import { Loader } from "../../../../assets";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { format } from "date-fns";
+import Image from "next/image";
 
 export default function Detail() {
     const router = useRouter();
@@ -67,13 +68,16 @@ export default function Detail() {
                     <div className="container">
                         <div className="box_inner">
                             <div className="description_wrap scrollable">
-                                <div className="image">
-                                    <div
-                                        className="main"
-                                        style={{
-                                            backgroundImage: `url(${baseUrl}${selectedReviews?.blogImage?.url})`,
-                                        }}
-                                    ></div>
+                                <div className="cover-container">
+                                    <Image
+                                        src={`${baseUrl}${selectedReviews?.blogImage?.url}`}
+                                        alt={'blog Image'}
+                                        layout="responsive"
+                                        width={1170}
+                                        height={610}
+                                        className="cover-image"
+                                        priority
+                                    />
                                 </div>
                                 <div className="news_details">
                                     <span>
@@ -85,7 +89,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content3}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 

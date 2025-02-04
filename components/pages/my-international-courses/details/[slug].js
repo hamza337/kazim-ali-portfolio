@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import ReactMarkdown from "react-markdown";
 import { GetAllInterationalCourses } from "../../../../redux/action/internationalCourses";
+import Image from "next/image";
 
 
 export default function Detail() {
@@ -61,13 +62,16 @@ export default function Detail() {
                     <div className="container">
                         <div className="box_inner">
                             <div className="description_wrap scrollable">
-                                <div className="image">
-                                    <div
-                                        className="main"
-                                        style={{
-                                            backgroundImage: `url(${baseUrl}${selectedReviews?.courseImage?.url})`,
-                                        }}
-                                    ></div>
+                                <div className="cover-container">
+                                    <Image
+                                        src={`${baseUrl}${selectedReviews?.courseImage?.url}`}
+                                        alt={'blog Image'}
+                                        layout="responsive"
+                                        width={1170}
+                                        height={610}
+                                        className="cover-image"
+                                        priority
+                                    />
                                 </div>
                                 <div className="news_details">
                                     <h3 className="title">{selectedReviews?.title}</h3>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Hero from "../../hero/Hero";
 import About from "../../about/About";
 import Service from "../../service/Service";
-import Portfolio from "../../portfolio/Portfolio";
 import Testimonial from "../../testimonial/Testimonial";
 import Blog from "../../blog/Blog";
 import { GetAllReviews, GetAllServices } from "../../../redux/action";
@@ -58,17 +57,7 @@ const EdinaHorizontal = () => {
           <Service apiRoute='courses' path='/national-courses'/>
         </div>
       </div>
-      {/* <div className="edina_tm_portfolio" id="courses">
-        <div className="container">
-          <div className="edina_tm_title">
-            <h3>His National Courses!</h3>
-            <p>
-              Sir Syed Kazim Ali has been teaching and providing the following services and courses at the national level.
-            </p>
-          </div>
-          <Portfolio />
-        </div>
-      </div> */}
+      {/* Start Testimonials Slider */}
       <div className="edina_tm_testimonials" id="testimonial">
         <div className="container">
           <div className="edina_tm_title">
@@ -85,7 +74,7 @@ const EdinaHorizontal = () => {
           </div>
         </div>
       </div>
-      {/* End Testimonial */}
+      {/* End Testimonial Slider */}
 
       {/* Start Student Rreviews Slider */}
       <div className="edina_tm_news" id="studentreviews">

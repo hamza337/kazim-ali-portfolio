@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const BlogList = () => {
   const router = useRouter();
@@ -45,26 +46,26 @@ const BlogList = () => {
                 data-aos-delay="150"
               >
                 <div className="list_inner">
-                  <div
-                    className="image"
+                  <div 
+                    className="cover-container"
                     onClick={() => {
                       router.push(`/blogs/details/${slug}`);
                     }}
                   >
-                    <div
-                      className="main"
-                      style={{
-                        backgroundImage: `url(${baseUrl}${item.blogImage?.url})`,
-                      }}
-                    ></div>
+                    <Image
+                      src={`${baseUrl}${item?.blogImage?.url}`}
+                      alt={'blog Image'}
+                      layout="responsive"
+                      width={1170}
+                      height={610}
+                      className="cover-image"
+                      priority
+                    />
                   </div>
 
                   <div className="news_details">
                     <span>
                       {formattedDate}{" "}
-                      <a href="#!">
-                        {item.reviewerName ? item.reviewerName : ""}
-                      </a>
                     </span>
                     <h3
                       className="title"

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const ReviewList = () => {
   const router = useRouter();
@@ -30,11 +31,6 @@ const ReviewList = () => {
       <ul>
         {filteredReviews.length > 0 &&
           filteredReviews.map((item) => {
-            const formattedDate = new Date(item.postedDate).toLocaleDateString("en-US", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            });
             const slug = generateSlug(item.title); // Generate slug from title
 
             return (
@@ -45,27 +41,30 @@ const ReviewList = () => {
                 data-aos-delay="150"
               >
                 <div className="list_inner">
-                  <div
-                    className="image"
-                    onClick={() => {
+                  <div 
+                      className="cover-container"
+                      onClick={() => {
                       router.push(`/student-reviews/details/${slug}`);
-                    }}
-                  >
-                    <div
-                      className="main"
-                      style={{
-                        backgroundImage: `url(${baseUrl}${item.reviewerImage?.url})`,
                       }}
-                    ></div>
+                  >
+                      <Image
+                      src={`${baseUrl}${item?.reviewerImage?.url}`}
+                      alt={'National Course Image'}
+                      layout="responsive"
+                      width={1170}
+                      height={610}
+                      className="cover-image"
+                      priority
+                      />
                   </div>
 
                   <div className="news_details">
                     <span>
-                      {formattedDate}{" "}
-                      <a href="#!">
-                        {item.reviewerName ? item.reviewerName : ""}
-                      </a>
+                      {item.reviewerName ? item.reviewerName : ""}{" "}
                     </span>
+                    <p>
+                      {item.reviewerDesignation ? item.reviewerDesignation : ""}
+                    </p>
                     <h3
                       className="title"
                       onClick={() => {
