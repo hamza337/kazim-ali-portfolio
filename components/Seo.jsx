@@ -24,7 +24,8 @@ const Seo = ({ pageTitle, font, description, keywords, image }) => {
                 </title>
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
                 <meta name="keywords" content={keywords || "sir kazim, blogs, articles, css and pms essays, sir kazim essays, sir kazim blogs, sir kazim courses"} />
-                <meta name="description" content={description || "See what Sir Kazim Ali Agha is offering."} />
+                {/* <meta name="description" content={description || "See what Sir Kazim Ali Agha is offering."} /> */}
+                <meta name="description" content={description} />
                 <meta name="XODEAC" content="Xodeac Tech business@xodeactech.com" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
