@@ -9,6 +9,7 @@ import { GetAllCSS } from "../../../redux/action";
 
 const index = () => {
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const { slug } = router.query;
   const dispatch = useDispatch();
   const cssAndPms = useSelector((state) => state.cssAndPms);
@@ -16,7 +17,7 @@ const index = () => {
     pageTitle: "",
     description: "",
     keywords: "",
-    image: theimage,
+    image: null,
   });
 
   const generateSlug = (title) => {
@@ -37,9 +38,9 @@ const index = () => {
       if (selectedCourse) {
         setMetaData({
           pageTitle: selectedCourse.metaTitle || selectedCourse.title,
-          description: selectedCourse.metaDescription || "Sir Kazim Css & Pms Essay detail, Read Sir Kazim Essay",
+          description: selectedCourse.metaDescription || selectedCourse.description,
           keywords: selectedCourse.metaKeywords || "Css and Pms Essay, Sir Kazim Essays, Sir Kazim Css writings",
-          image: theimage || null,
+          image: `${baseUrl}${selectedCourse.coverImage.url}` || null,
         });
       }
     }

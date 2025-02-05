@@ -29,11 +29,11 @@ const Seo = ({ pageTitle, font, description, keywords, image }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={pageTitle} />
-                <meta property="og:description" content={description} />
-                <meta property="og:image" content={image} />
-                <meta property="og:url" content={currentUrl} />
-                <meta property="og:type" content="website" />
+                <meta key="og:title" property="og:title" content={pageTitle} />
+                <meta key="og:description" property="og:description" content={description} />
+                <meta key="og:image" property="og:image" content={image} />
+                <meta key="og:url" property="og:url" content={currentUrl} />
+                <meta key="og:type" property="og:type" content="website" />
 
                 {/* Twitter Card Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />

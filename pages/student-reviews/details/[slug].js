@@ -11,6 +11,7 @@ import { GetAllReviews } from "../../../redux/action";
 const index = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const dispatch = useDispatch();
   const review = useSelector((state) => state.review);
   const [metaData, setMetaData] = useState({
@@ -38,9 +39,9 @@ const index = () => {
       if (selectedCourse) {
         setMetaData({
             pageTitle: selectedCourse.metaTitle || selectedCourse.title,
-            description: selectedCourse.metaDescription || "Sir Kazim's Students Remarks",
+            description: selectedCourse.metaDescription || selectedCourse.content.slice(0,200),
             keywords: selectedCourse.metaKeywords || "sir kazim students remarks, sir kazim reviews, sir kazim ali reviews, sir kazim ali feedbacks",
-            image: theimage || null,
+            image: `${baseUrl}${selectedCourse.coverImage.url}` || null,
         });
       }
     }

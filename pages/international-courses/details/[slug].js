@@ -13,6 +13,7 @@ const index = () => {
   const { slug } = router.query;
   const dispatch = useDispatch();
   const review = useSelector((state) => state.review);
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [metaData, setMetaData] = useState({
     pageTitle: "Loading...",
     description: "Loading...",
@@ -38,9 +39,9 @@ const index = () => {
       if (selectedCourse) {
             setMetaData({
                 pageTitle: selectedCourse.metaTitle,
-                description: selectedCourse.metaDescription || "Blog details, Sir Kazim Blog",
+                description: selectedCourse.metaDescription || selectedCourse.courseOutline.slice(0, 250),
                 keywords: selectedCourse.metaKeywords || "blog, full blog, article, insights",
-                image: theimage || null,
+                image: `${baseUrl}${selectedCourse.coverImage.url}` || null,
             });
       }
     }

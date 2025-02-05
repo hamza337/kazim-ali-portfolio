@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllBlogs } from "../../../redux/action/blogs";
-import theimage from "../../../public/img/hero/kazim.jpg"
 
 const BlogDetailPage = () => {
   const router = useRouter();
   const { slug } = router.query;
   const dispatch = useDispatch();
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const review = useSelector((state) => state.review);
   const [metaData, setMetaData] = useState({
     pageTitle: "",
@@ -37,9 +37,9 @@ const BlogDetailPage = () => {
       if (selectedBlog) {
         setMetaData({
           pageTitle: selectedBlog.metaTitle || selectedBlog.title,
-          description: selectedBlog.metaDescription || "Blog detail, Read Sir Kazim Blog",
+          description: selectedBlog.metaDescription || selectedBlog.description,
           keywords: selectedBlog.metaKeywords || "blog, sir kazim blogs, css blogs, pms blogs, css and pms blogs, article, insights",
-          image: theimage || null,
+          image: `${baseUrl}${selectedBlog.blogImage.url}` || null,
         });
       }
     }
