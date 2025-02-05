@@ -43,7 +43,7 @@ const CSSAndPMSList = () => {
                                     <div 
                                         className="cover-container"
                                         onClick={() => {
-                                        router.push(`/national-courses/details/${slug}`);
+                                        router.push(`/css-and-pms-essays/details/${slug}`);
                                         }}
                                     >
                                         <Image

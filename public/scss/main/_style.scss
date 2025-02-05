@@ -197,8 +197,8 @@ body {
 
   // Adjust for screens below 1400px
   @media (max-width: 1400px) {
-    width: 800px;
-    height: 480px;
+    width: 775px;
+    height: 520px;
 
     .title-description {
       padding: 40px 30px 30px !important;
@@ -208,40 +208,17 @@ body {
 
   // Stack image on top and content below for small devices (like mobile)
   @media (max-width: 768px) {
-    width: 100%;
+    width: 700px;
     height: auto;
     padding: 0px;
 
-    .box_inner {
-      flex-direction: column; // Stack vertically on mobile
-    }
-
-    .description_wrap {
-      flex-direction: column; // Stack image and content vertically
-    }
-
-    .image.news_image {
-      max-width: 100% !important;
-      height: 300px !important; // Adjust height for mobile
-      margin-bottom: 20px;
-
-      .main.pop-up-background-image {
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        border-radius: 20px 20px 0 0; // Rounded top corners only
-      }
-
-   
-    }
-
     .title-description {
       width: 100% !important;
-      padding: 20px !important;
+      padding: 10px !important;
 
       .modal-close-icon {
         margin-top: 0 !important;
-        margin-right: -10px !important;
+        margin-right: 0px !important;
         top: 7px;
         position: absolute;
         background: #fff !important;
@@ -249,14 +226,70 @@ body {
       }
 
       .news_content {
-        max-height: 300px; // Adjust height for better scrolling on mobile
+        max-height: 400px !important; // Adjust height for better scrolling on mobile
         text-align: center;
       }
       .modal_logo {
-        margin-bottom: 20px;
-        margin-top: 30px;
+        margin-bottom: 10px !important;
+        margin-top: 15px !important;
         text-align: center;
       }
+
+      .cpf-button.edina_tm_button{
+        margin-top: 15px !important;
+        padding-top: 0px !important;
+      }
+    }
+  }
+
+  @media (max-width: 724px) {
+    width: 600px;
+    height: auto;
+    padding: 0px;
+
+    .title-description {
+      width: 100% !important;
+      padding: 8px !important;
+
+      .modal-close-icon {
+        margin-top: 0 !important;
+        margin-right: 10px !important;
+        top: 7px;
+        position: absolute;
+        background: #fff !important;
+        border-radius: 50% !important;
+        width: 25px !important;
+        height: 25px !important;
+      }
+
+      .news_content {
+        max-height: 340px !important; // Adjust height for better scrolling on mobile
+        text-align: center;
+
+        .title {
+          font-size: 24px !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .description {
+          font-size: 14px !important;
+        }
+      }
+      .modal_logo {
+        margin-bottom: 10px !important;
+        margin-top: 15px !important;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 630px) {
+    width: 100%;
+    height: 60vh;
+    padding: 0px;
+
+    .popup-cover-container {
+      display: none;
     }
   }
 }
@@ -2644,6 +2677,18 @@ body.dark .loader_line:after {
     height: auto !important;
     aspect-ratio: 7 / 12;
     object-fit: cover;
+
+    @media screen and (max-width: 1400px) {
+      width: 304px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 335px !important;
+    }
+
+    @media screen and (max-width: 724px) {
+      width: 281px !important;
+    }
   }
 }
 
