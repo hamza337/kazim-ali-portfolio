@@ -14,13 +14,13 @@ const APP_SETTINGS = {
             delete: baseUrl + '/api/categories'
         },
         REVIEWS: {
-            getAll: baseUrl + '/api/student-reviews?populate=*&sort[0]=createdAt:asc',
+            getAll: baseUrl + '/api/student-reviews?populate=*&sort[0]=createdAt:asc&pagination[limit]=100',
         },
         NATIONALCOURSES: {
-            getAll: baseUrl + '/api/courses?populate=*&sort[0]=createdAt:desc',
+            getAll: baseUrl + '/api/courses?populate=*&sort[0]=createdAt:desc&pagination[limit]=100',
         },
         INTERNATIONALCOURSES: {
-            getAll: baseUrl + '/api/international-courses?populate=*&sort[0]=createdAt:desc',
+            getAll: baseUrl + '/api/international-courses?populate=*&sort[0]=createdAt:desc&pagination[limit]=100',
         },
         BLOGS: {
             getAll: baseUrl + '/api/blogs?populate=*&sort[0]=createdAt:asc',
@@ -32,7 +32,7 @@ const APP_SETTINGS = {
             delete: baseUrl + '/api/services'
         },
         CSSANDPMS: {
-            getAll: baseUrl + '/api/css-and-pms-essays?populate=*&sort[0]=createdAt:asc',
+            getAll: baseUrl + '/api/css-and-pms-essays?populate=*&sort[0]=createdAt:asc&pagination[limit]=100',
         },
         NEWSLETTER: {
             getAll: baseUrl + '/api/popups',

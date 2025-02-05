@@ -44,7 +44,7 @@ const Blog = () => {
 
   const getReviews = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/student-reviews?populate=*&sort[0]=createdAt:asc`)
+      const response = await axios.get(`${baseUrl}/api/student-reviews?populate=*&sort[0]=createdAt:asc&pagination[limit]=100`)
       setData(response.data.data);
     } catch (err) {
       console.error(err);

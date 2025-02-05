@@ -21,7 +21,7 @@ const Service = ({apiRoute, path}) => {
 
   const getAllInternationalCourses = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/${apiRoute}?populate=*&sort[0]=createdAt:desc`)
+      const response = await axios.get(`${baseUrl}/api/${apiRoute}?populate=*&sort[0]=createdAt:desc&pagination[limit]=100`)
       setCourses(response?.data.data);
     } catch (err) {
       console.error('Error Fetching Data');
