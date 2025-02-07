@@ -47,9 +47,21 @@ const index = () => {
   }, [dispatch, slug]);
 
     return (
+      <>
+        <NextSeo
+          title={metaData.pageTitle}
+          description={metaData.description}
+          openGraph={{
+            title: metaData.pageTitle,
+            description: metaData.description,
+            images: [{ url: metaData.image }],
+            type: "article",
+          }}
+        />
         <ParentHOC authorizedIgnored={true} pageTitle={metaData.pageTitle} description={metaData.description} keywords={metaData.keywords} image={metaData.image}>
           <CSSAndPMSDetail />
         </ParentHOC>
+      </>
     );
 };
 
