@@ -22,7 +22,7 @@ const Blog = () => {
       {
         breakpoint: 575,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           arrow: false,
           autoplay: false,
           speed: 300,

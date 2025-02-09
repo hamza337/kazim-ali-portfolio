@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllCSS } from "../../../redux/action";
-import { NextSeo } from "next-seo";
 
 const index = () => {
   const router = useRouter();
@@ -49,16 +48,6 @@ const index = () => {
 
     return (
       <>
-        <NextSeo
-          title={metaData.pageTitle}
-          description={metaData.description}
-          openGraph={{
-            title: metaData.pageTitle,
-            description: metaData.description,
-            images: [{ url: metaData.image }],
-            type: "article",
-          }}
-        />
         <ParentHOC authorizedIgnored={true} pageTitle={metaData.pageTitle} description={metaData.description} keywords={metaData.keywords} image={metaData.image}>
           <CSSAndPMSDetail />
         </ParentHOC>

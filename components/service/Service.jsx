@@ -62,13 +62,15 @@ const Service = ({apiRoute, path}) => {
         ))}
       </ul>
 
-      <div className="show_more_btn edina_tm_button">
-        <button className="color"
-        onClick={() => router.push(`${path}`)}
-        >
-          Show More
-        </button>
-      </div>
+      {courses.length > 4 && 
+        <div className="show_more_btn edina_tm_button">
+          <button className="color"
+          onClick={() => router.push(`${path}`)}
+          >
+            Show More
+          </button>
+        </div>
+      }
     </div>
   );
 };
