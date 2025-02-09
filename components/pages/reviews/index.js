@@ -27,7 +27,7 @@ const Reviews = () => {
                 <div className="content">
                   <div className="info">
                     <p>
-                      Discover what students worldwide have to say about Sir Kazim's transformative English writing courses. From CSS and PMS exam preparation to building professional writing skills, read testimonials highlighting his expert guidance, comprehensive teaching methods, and dedication to student success. Learn how his personalized approach has empowered thousands to excel in competitive exams and launch digital careers.
+                    Discover how Sir Kazim’s expert English writing courses have empowered thousands to excel in CSS, PMS, and Judiciary exams, master professional writing, and build successful careers in freelancing and content creation. Read student testimonials on his strategic mentorship and comprehensive teaching methods that transform writing skills for competitive success.
                     </p>
                   </div>
                 </div>

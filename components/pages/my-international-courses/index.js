@@ -27,9 +27,8 @@ const MyInternationalCourses = () => {
                                     </div>
                                     <div className="content">
                                         <div className="info">
-                                            <p>
-                                         
-Explore Sir Kazim's exceptional courses designed to help students achieve their academic and professional goals. With a focus on CSS and PMS exam preparation and mastering professional English writing, these courses equip learners with the skills and confidence to excel in globally competitive environments. Benefit from Sir Kazim's expert teaching methods and embark on a journey of success.
+                                            <p>                                         
+                                              Master GRE, GAT, SAT, GMAT, IELTS, TOEFL, Business English, English Grammar, and Professional English with Sir Kazim’s expert international courses. Gain the skills, confidence, and strategies needed to excel in standardized tests, academic writing, and professional communication for global success.
                                             </p>
                                         </div>
                                     </div>

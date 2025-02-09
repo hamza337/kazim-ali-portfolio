@@ -7,6 +7,7 @@ import { Loader } from "../../../../assets";
 import ReactMarkdown from "react-markdown";
 import { GetAllInterationalCourses } from "../../../../redux/action/internationalCourses";
 import Image from "next/image";
+import rehypeRaw from "rehype-raw";
 
 
 export default function Detail() {
@@ -80,7 +81,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown>{selectedReviews?.courseOutline}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.courseOutline}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 

@@ -32,7 +32,7 @@ const CssAndPms = () => {
                       __html: sanitizedDescription,
                     }}
                   />
-                  Stay ahead in your preparation with Sir Kazim’s enriching blogs, designed to empower you with in-depth knowledge and practical strategies for CSS and PMS exams. Explore expert insights on mastering competitive exam techniques, honing professional English writing skills, and navigating your career path with confidence. Tailored to inspire and guide aspiring students, Sir Kazim’s regular posts provide the tools you need to excel academically and professionally. Step into a world of learning and inspiration with Sir Kazim, and unlock your potential for success today.
+                  Find a comprehensive collection of CSS essays, PMS essays, CSS solved essays, and PMS solved essays at SyedKazimAli.info. Have free access to high-quality, expert-crafted essays by Sir Kazim’s successful students to enhance your CSS and PMS exam preparation.
                                             </p>
                                         </div>
                                     </div>

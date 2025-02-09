@@ -42,7 +42,7 @@ const ReviewList = () => {
               >
                 <div className="list_inner">
                   <div 
-                      className="cover-container"
+                      className="review-cover-container"
                       onClick={() => {
                       router.push(`/student-reviews/details/${slug}`);
                       }}
@@ -53,7 +53,7 @@ const ReviewList = () => {
                       layout="responsive"
                       width={1170}
                       height={610}
-                      className="cover-image"
+                      className="review-cover-image"
                       priority
                       />
                   </div>
@@ -66,7 +66,7 @@ const ReviewList = () => {
                       {item.reviewerDesignation ? item.reviewerDesignation : ""}
                     </p>
                     <h3
-                      className="title"
+                      className="review-title"
                       onClick={() => {
                         router.push(`/student-reviews/details/${slug}`);
                       }}

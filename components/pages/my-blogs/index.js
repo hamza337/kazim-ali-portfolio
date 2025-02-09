@@ -27,7 +27,7 @@ const MyBlogs = () => {
                 <div className="content">
                   <div className="info">
                     <p>
-                      Stay informed and inspired with Sir Kazim’s insightful blogs, where he shares his expertise on CSS and PMS exam strategies, professional English writing techniques, and career-building tips. With regular posts tailored to guide and motivate students, these blogs offer valuable knowledge and practical advice to help you excel in academics, competitive exams, and beyond. Dive into Sir Kazim’s world of wisdom and transform your learning journey today.
+                    Explore Sir Syed Kazim Ali’s expert blogs, packed with insights, tips, and strategies for CSS, PMS, and professional English writing. Stay ahead with high-quality content designed to help students excel in competitive exams and academic writing.
                     </p>
                   </div>
                 </div>

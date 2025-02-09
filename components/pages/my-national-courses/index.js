@@ -28,8 +28,7 @@ const MyNationalCourses = () => {
                                     <div className="content">
                                         <div className="info">
                                             <p>
-                                         
-                                            Delve into Sir Kazim's expertly crafted courses tailored to empower students with the knowledge and skills they need to succeed in their academic and career pursuits. From comprehensive CSS and PMS exam preparation to professional English writing mastery, these courses provide unparalleled guidance and support for ambitious learners seeking excellence.
+                                              Explore Sir Kazim’s expertly designed national courses, designed for CSS, PMS exam preparation, and professional English writing. Let's join him to gain unparalleled guidance, skills, and knowledge to excel in English essay and precis and career pursuits with comprehensive support for ambitious learners.
                                             </p>
                                         </div>
                                     </div>

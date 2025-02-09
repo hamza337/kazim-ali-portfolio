@@ -8,6 +8,7 @@ Modal.setAppElement("#__next");
 
 const Service = ({apiRoute, path}) => {
   const [courses, setCourses] = useState([]);
+  const [visibleCourses, setVisibleCourses] = useState(4);
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 
@@ -32,10 +33,28 @@ const Service = ({apiRoute, path}) => {
     getAllInternationalCourses();
   },[])
 
+  const updateVisibleCourses = () => {
+    if (window.innerWidth <= 768) {
+      setVisibleCourses(1); // Show only 1 card on mobile
+    } else {
+      setVisibleCourses(4); // Show 4 cards on larger screens
+    }
+  };
+
+  useEffect(() => {
+    updateVisibleCourses(); // Set initial value
+
+    // Listen for screen resizing
+    window.addEventListener("resize", updateVisibleCourses);
+    return () => {
+      window.removeEventListener("resize", updateVisibleCourses);
+    };
+  }, []);
+
   return (
     <div className="service_list">
       <ul>
-        {courses.slice(0, 4).map((item) => (
+        {courses.slice(0, visibleCourses).map((item) => (
           <li data-aos="fade-right" data-aos-duration="1200" key={item.id}>
             <Tilt>
               <div
@@ -58,11 +77,11 @@ const Service = ({apiRoute, path}) => {
                 </div>
               </div>
             </Tilt>
-          </li>
+          </li> 
         ))}
       </ul>
 
-      {courses.length > 4 && 
+      {courses.length > visibleCourses && 
         <div className="show_more_btn edina_tm_button">
           <button className="color"
           onClick={() => router.push(`${path}`)}

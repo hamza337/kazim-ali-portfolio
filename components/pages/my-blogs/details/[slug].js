@@ -89,7 +89,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content3}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 

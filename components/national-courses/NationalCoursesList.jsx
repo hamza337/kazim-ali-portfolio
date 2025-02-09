@@ -42,7 +42,7 @@ const NationalCoursesList = () => {
               >
                 <div className="list_inner">
                   <div 
-                    className="cover-container"
+                    className="css-cover-container"
                     onClick={() => {
                       router.push(`/national-courses/details/${slug}`);
                     }}
@@ -54,7 +54,7 @@ const NationalCoursesList = () => {
                       layout="responsive"
                       width={1170}
                       height={610}
-                      className="cover-image"
+                      className="css-cover-image"
                       priority
                     />
                     : <div>No Image Found</div> }

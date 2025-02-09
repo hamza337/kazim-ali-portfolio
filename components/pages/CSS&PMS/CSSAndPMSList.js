@@ -41,7 +41,7 @@ const CSSAndPMSList = () => {
                                 data-aos-delay="150">
                                 <div className="card list_inner">
                                     <div 
-                                        className="cover-container"
+                                        className="css-cover-container"
                                         onClick={() => {
                                         router.push(`/css-and-pms-essays/details/${slug}`);
                                         }}
@@ -52,7 +52,7 @@ const CSSAndPMSList = () => {
                                         layout="responsive"
                                         width={1170}
                                         height={610}
-                                        className="cover-image"
+                                        className="css-cover-image"
                                         priority
                                         />
                                     </div>

@@ -84,7 +84,7 @@ export default function CSSAndPMSDetail() {
               </div>
               <CPFSection />
               <div className="main_content paddingTop">
-                <div className="heading-1" style={{"marginBottom":'20px'}} >
+                <div className="descriptions" style={{"marginBottom":'20px'}} >
                   <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedCSSPMS?.content}</ReactMarkdown>
                 </div>
                 <div className=" edina_tm_button">

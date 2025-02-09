@@ -355,7 +355,7 @@ body {
 #css-and-pms .card.list_inner {
   padding: 0;
   border-radius: 10px;
-  min-height: 400px;
+  min-height: 350px;
   max-height: 400px;
   border: none !important;
   box-shadow: 0px 2px 50px -2px #00000005;
@@ -2398,7 +2398,7 @@ body.dark .loader_line:after {
   padding: 120px 0px 140px 0px;
 
   @media screen and (max-width: 991px) {
-    padding: 90px 0px 110px 0px;
+    padding: 75px 0px 100px 0px;
   }
 
   .slick-prev,
@@ -2548,11 +2548,11 @@ body.dark .loader_line:after {
   }
 }
 
-.news_inner.my_carousel ul li {
-  @media screen and (max-width: 575px) {
-    padding-bottom: 15px;
-  }
-}
+// .news_inner.my_carousel ul li {
+//   @media screen and (max-width: 575px) {
+//     padding-bottom: 15px;
+//   }
+// }
 
 .edina_tm_news .news_inner {
   width: 100%;
@@ -2566,18 +2566,31 @@ body.dark .loader_line:after {
   width: 100%;
   float: left;
   padding-top: 9px;
+  // min-height: 90px;
 }
 //custom CSS ALi Hamza
 .edina_tm_news ul li .news_details p {
   color: #7e7e7e;
   font-size: 16px;
   padding-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 .edina_tm_news ul li .news_details span {
   font-size: 16px;
   display: inline-block;
   color: #7e7e7e;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 .edina_tm_news ul li .news_details span a {
@@ -2604,6 +2617,7 @@ body.dark .loader_line:after {
 
 .edina_tm_news ul li .news_details .title {
   line-height: 1.2;
+  // min-height: calc(1.2em * 3);
 }
 
 .edina_tm_news ul li .news_details .title {
@@ -2612,6 +2626,24 @@ body.dark .loader_line:after {
   font-size: 22px;
   font-weight: 600;
   transition: all 0.3s ease;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edina_tm_news ul li .news_details .review-title {
+  text-decoration: none;
+  color: #34495e;
+  font-size: 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .edina_tm_modalbox .details {
@@ -2656,9 +2688,51 @@ body.dark .loader_line:after {
 
 .edina_tm_modalbox .description_wrap .cover-container {
   width: 100%;
-  max-width: 1170px;
+  max-width: 1370px;
 
   .cover-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1170 / 610;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.review-cover-container {
+  width: 100%;
+  // max-width: 1170px;
+
+  .review-cover-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 467 / 373;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.blog-cover-container {
+  width: 100%;
+  // max-width: 1170px;
+
+  .blog-cover-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1170 / 610;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.css-cover-container {
+  width: 100%;
+  // max-width: 1170px;
+
+  .css-cover-image {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 1170 / 610;
@@ -2759,6 +2833,10 @@ body.modal {
   width: 100%;
   float: left;
   margin-bottom: 15px;
+
+  ul, ol {
+    list-style-position: inside !important;
+  }
 }
 
 .edina_tm_modalbox .main_content .descriptions .bigger {
@@ -3703,12 +3781,17 @@ a {
 
   .edina_tm_testimonials .list ul li .list_inner {
     padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 10px;
   }
 
   .edina_tm_services ul li .list_inner {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .edina_tm_national_services ul li .list_inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
   .edina_tm_national_services ul li .list_inner {
@@ -4848,6 +4931,10 @@ a {
             font-size: 12px;
           }
         }
+      }
+
+      @media screen and (max-width: 485px) {
+        width: 100%;
       }
     }
   }

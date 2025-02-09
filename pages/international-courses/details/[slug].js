@@ -41,7 +41,7 @@ const index = () => {
                 pageTitle: selectedCourse.metaTitle,
                 description: selectedCourse.metaDescription || selectedCourse.courseOutline.slice(0, 250),
                 keywords: selectedCourse.metaKeywords || "blog, full blog, article, insights",
-                image: `${baseUrl}${selectedCourse.coverImage.url}` || null,
+                image: `${baseUrl}${selectedCourse.coverImage?.url}` || null,
             });
       }
     }

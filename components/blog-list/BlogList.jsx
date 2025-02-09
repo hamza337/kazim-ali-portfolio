@@ -47,7 +47,7 @@ const BlogList = () => {
               >
                 <div className="list_inner">
                   <div 
-                    className="cover-container"
+                    className="blog-cover-container"
                     onClick={() => {
                       router.push(`/blogs/details/${slug}`);
                     }}
@@ -58,7 +58,7 @@ const BlogList = () => {
                       layout="responsive"
                       width={1170}
                       height={610}
-                      className="cover-image"
+                      className="blog-cover-image"
                       priority
                     />
                   </div>

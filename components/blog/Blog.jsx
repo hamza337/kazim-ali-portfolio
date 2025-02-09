@@ -62,8 +62,7 @@ const Blog = () => {
         <Slider {...settings}>
           {data?.length > 0 &&
             data?.slice(0,6).map((item) => {
-              const slug = generateSlug(item.title); // Generate slug from title
-              // Return the <li> element inside the map function
+              const slug = generateSlug(item.title); 
               return (
                 <li
                   key={item.id}
@@ -73,7 +72,7 @@ const Blog = () => {
                 >
                   <div className="list_inner">
                     <div 
-                      className="cover-container"
+                      className="review-cover-container"
                       onClick={() => {
                         router.push(`/student-reviews/details/${slug}`);
                       }}
@@ -82,9 +81,9 @@ const Blog = () => {
                         src={`${baseUrl}${item?.reviewerImage?.url}`}
                         alt={'blog Image'}
                         layout="responsive"
-                        width={1170}
-                        height={610}
-                        className="cover-image"
+                        width={467}
+                        height={373}
+                        className="review-cover-image"
                         priority
                       />
                     </div>
