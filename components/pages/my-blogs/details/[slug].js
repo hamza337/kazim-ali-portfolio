@@ -10,11 +10,22 @@ import rehypeRaw from "rehype-raw";
 import { format } from "date-fns";
 import Image from "next/image";
 
-export default function Detail() {
-    const router = useRouter();
-    const { slug } = router.query; // Slug from the URL
-    const dispatch = useDispatch();
-    const review = useSelector((state) => state.review);
+export default function Detail({ blog }) {
+
+    if (!blog) {
+        return (
+          <div className="mb-4 mt-4 py-4 text-center align-items-center justify-center">
+            <Loader />
+          </div>
+        );
+    }
+
+
+
+    // const router = useRouter();
+    // const { slug } = router.query; // Slug from the URL
+    // const dispatch = useDispatch();
+    // const review = useSelector((state) => state.review);
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const onError = (errorMessage) => {
@@ -33,44 +44,44 @@ export default function Detail() {
 
 
   // Function to generate slug dynamically
-  const generateSlug = (title) => {
-    return title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
+//   const generateSlug = (title) => {
+//     return title
+//       .toLowerCase()
+//       .replace(/ /g, "-")
+//       .replace(/[^\w-]+/g, "");
+//   };
 
-  useEffect(() => {
-    dispatch(GetAllBlogs(onError)); // Fetch all services
-  }, []);
+//   useEffect(() => {
+//     dispatch(GetAllBlogs(onError)); // Fetch all services
+//   }, []);
 
-   // Find the service based on the slug
-   const selectedReviews = review.allReviews.find(
-    (item) => generateSlug(item.title) === slug
-  );
+//    // Find the service based on the slug
+//    const selectedReviews = review.allReviews.find(
+//     (item) => generateSlug(item.title) === slug
+//   );
 
-  if (!selectedReviews) {
-    return <div className='mb-4 mt-4 py-4 text-center align-items-center justify-center'>    <Loader /> </div>;
-  }
+//   if (!selectedReviews) {
+//     return <div className='mb-4 mt-4 py-4 text-center align-items-center justify-center'>    <Loader /> </div>;
+//   }
 
   const formattedDate = (dateString) => {
-    return format(new Date(dateString), "MMMM dd, yyyy, hh:mm a");
+    return format(new Date(dateString), "MMMM dd, yyyy");
   };
 
 
     return (
         <div className="edina_tm_modalbox studentreviews">
-            {
+            {/* {
                 review.loading === true
                     ?
                     <Loader />
-                    :
+                    : */}
                     <div className="container">
                         <div className="box_inner">
                             <div className="description_wrap scrollable">
                                 <div className="cover-container">
                                     <Image
-                                        src={`${baseUrl}${selectedReviews?.blogImage?.url}`}
+                                        src={`${baseUrl}${blog?.blogImage?.url}`}
                                         alt={'blog Image'}
                                         layout="responsive"
                                         width={1170}
@@ -81,15 +92,15 @@ export default function Detail() {
                                 </div>
                                 <div className="news_details">
                                     <span>
-                                        {formattedDate(selectedReviews?.postedOn)}{" "}
+                                        {formattedDate(blog?.postedOn)}{" "}
                                     </span>
-                                    <h3 className="title">{selectedReviews?.title}</h3>
+                                    <h3 className="title">{blog?.title}</h3>
                                 </div>
                                 {/* End details */}
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.content}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{blog?.content4}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 
@@ -103,7 +114,7 @@ export default function Detail() {
                         </div>
                         {/* End box inner */}
                     </div>
-            }
+            {/* } */}
 
         </div>
     );

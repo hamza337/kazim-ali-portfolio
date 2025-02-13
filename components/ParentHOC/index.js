@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ParentHOC = ({ children, ...rest }) => {
     const [isDark, setIsDark] = useState(() => {
         // Get theme from localStorage or fallback to false (light mode)
-        return localStorage.getItem("theme-color") === "theme-dark";
+        // return localStorage.getItem("theme-color") === "theme-dark";
     });
     const authorized = useAuth()
     useEffect(() => {

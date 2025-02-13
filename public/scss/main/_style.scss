@@ -40,6 +40,11 @@ body {
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
+  p{
+    span{
+      font-family: Poppins !important;
+    }
+  }
 }
 
 #css-and-pms .about_title h3, #studentreviews .about_title h3 {
@@ -2846,7 +2851,7 @@ body.modal {
 }
 
 .edina_tm_modalbox .main_content .descriptions p {
-  margin-bottom: 22px;
+  // margin-bottom: 22px;
   font-size: 16px;
 }
 
