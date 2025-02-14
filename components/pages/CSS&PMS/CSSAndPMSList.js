@@ -31,7 +31,6 @@ const CSSAndPMSList = () => {
             <ul>
                 {filteredReviews?.length > 0 &&
                     filteredReviews.map((item) => {
-                        const sanitizedDescription = DOMPurify.sanitize(item?.description || "");
                         const slug = generateSlug(item.title); // Generate slug from title
                         return (
                             <li

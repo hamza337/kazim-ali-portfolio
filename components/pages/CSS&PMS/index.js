@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllCSS } from "../../../redux/action";
 import CSSAndPMSList from "./CSSAndPMSList";
-import DOMPurify from "dompurify";
 
 const CssAndPms = () => {
     const dispatch = useDispatch();
@@ -12,7 +11,6 @@ const CssAndPms = () => {
 
     const cssAndPms = useSelector((state) => state.cssAndPms);
 
-    const sanitizedDescription = DOMPurify.sanitize(cssAndPms?.getLookUps?.value || "");
     return (
         <div id='css-and-pms'>
             <div className="card overflow-hidden inner-page-card">
@@ -27,11 +25,6 @@ const CssAndPms = () => {
                                     <div className="content">
                                         <div className="info">
                                             <p>
-                                            <div
-                    dangerouslySetInnerHTML={{
-                      __html: sanitizedDescription,
-                    }}
-                  />
                   Find a comprehensive collection of CSS essays, PMS essays, CSS solved essays, and PMS solved essays at SyedKazimAli.info. Have free access to high-quality, expert-crafted essays by Sir Kazim’s successful students to enhance your CSS and PMS exam preparation.
                                             </p>
                                         </div>
