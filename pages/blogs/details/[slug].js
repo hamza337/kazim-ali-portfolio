@@ -120,16 +120,13 @@
 
 import ParentHOC from "../../../components/ParentHOC";
 import Detail from "../../../components/pages/my-blogs/details/[slug]";
-import { useRouter } from "next/router";
-import { GetAllBlogs } from "../../../redux/action/blogs";
-import { useDispatch } from "react-redux";
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
   // Fetch blogs from API
-  const res = await fetch(`${baseUrl}/api/blogs?populate=*`);
+  const res = await fetch(`${baseUrl}/api/blogs?populate=*&sort[0]=createdAt:asc&pagination[limit]=100`);
   const blogs = await res.json();
 
   console.log('first', blogs)
@@ -157,7 +154,6 @@ export async function getServerSideProps(context) {
 }
 
 const BlogDetailPage = ({ metaData, selectedBlog }) => {
-  const dispatch = useDispatch();
 
   return (
     <ParentHOC

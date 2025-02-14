@@ -9,60 +9,60 @@ import rehypeRaw from "rehype-raw";
 import { GetAllNationalCourses } from "../../../../redux/action/nationalCourses";
 import Image from "next/image";
 
-export default function Detail() {
-    const router = useRouter();
-    const { slug } = router.query; // Slug from the URL
-    const dispatch = useDispatch();
-    const review = useSelector((state) => state.review);
+export default function Detail({course}) {
+//     const router = useRouter();
+//     const { slug } = router.query; // Slug from the URL
+//     const dispatch = useDispatch();
+//     const review = useSelector((state) => state.review);
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-    const onError = (errorMessage) => {
-        toast.error(errorMessage, {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        document.getElementB
-    }
+//     const onError = (errorMessage) => {
+//         toast.error(errorMessage, {
+//             position: "top-right",
+//             autoClose: 2000,
+//             hideProgressBar: false,
+//             closeOnClick: true,
+//             pauseOnHover: true,
+//             draggable: true,
+//             progress: undefined,
+//         });
+//         document.getElementB
+//     }
 
-  // Function to generate slug dynamically
-  const generateSlug = (title) => {
-    return title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
+//   // Function to generate slug dynamically
+//   const generateSlug = (title) => {
+//     return title
+//       .toLowerCase()
+//       .replace(/ /g, "-")
+//       .replace(/[^\w-]+/g, "");
+//   };
 
-  useEffect(() => {
-    dispatch(GetAllNationalCourses(onError)); // Fetch all services
-  }, []);
+//   useEffect(() => {
+//     dispatch(GetAllNationalCourses(onError)); // Fetch all services
+//   }, []);
 
-   // Find the service based on the slug
-   const selectedReviews = review.allReviews.find(
-    (item) => generateSlug(item.title) === slug
-  );
+//    // Find the service based on the slug
+//    const selectedReviews = review.allReviews.find(
+//     (item) => generateSlug(item.title) === slug
+//   );
 
-  if (!selectedReviews) {
-    return <div className='mb-4 mt-4 py-4 text-center align-items-center justify-center'>    <Loader /> </div>;
+  if (!course) {
+    return <div className='mb-4 mt-4 py-4 text-center align-items-center justify-center'> <Loader /> </div>;
   }
 
     return (
         <div className="edina_tm_modalbox studentreviews">
-            {
+            {/* {
                 review.loading === true
                     ?
                     <Loader />
-                    :
+                    : */}
                     <div className="container">
                         <div className="box_inner">
                             <div className="description_wrap scrollable">
                                 <div className="cover-container">
                                     <Image
-                                        src={`${baseUrl}${selectedReviews?.coverImage?.url}`}
+                                        src={`${baseUrl}${course?.coverImage?.url}`}
                                         alt={'blog Image'}
                                         layout="responsive"
                                         width={1170}
@@ -72,7 +72,7 @@ export default function Detail() {
                                     />
                                 </div>
                                 <div className="news_details">
-                                    <h3 className="title">{selectedReviews?.title}</h3>
+                                    <h3 className="title">{course?.title}</h3>
                                 </div>
                                 {/* End details */}
                                 <div className="course-info-style">
@@ -80,43 +80,43 @@ export default function Detail() {
                                         <div>
                                         <li>
                                             <h6>Instructor</h6>
-                                            <span>{selectedReviews?.instructor}</span>
+                                            <span>{course?.instructor}</span>
                                         </li>
                                         <li>
                                             <h6>Course Fee</h6>
-                                            <span>{selectedReviews?.courseFee}</span>
+                                            <span>{course?.courseFee}</span>
                                         </li>
                                         <li>
                                             <h6>Duration</h6>
-                                            <span>{selectedReviews?.duration}</span>
+                                            <span>{course?.duration}</span>
                                         </li>
                                         </div>
                                         <div>
                                         <li>
                                             <h6>Delivery Method</h6>
-                                            <span>{selectedReviews?.deliveryMethod}</span>
+                                            <span>{course?.deliveryMethod}</span>
                                         </li>
                                         <li>
                                             <h6>Class Size</h6>
-                                            <span>{selectedReviews?.classSize}</span>
+                                            <span>{course?.classSize}</span>
                                         </li>
                                         <li>
                                             <h6>One-on-One Coaching</h6>
-                                            <span>{selectedReviews?.oneOnOneCoaching}</span>
+                                            <span>{course?.oneOnOneCoaching}</span>
                                         </li>
                                         </div>
                                         <div>
                                         <li>
                                             <h6>Lectures a Week</h6>
-                                            <span>{selectedReviews?.lecturesPerWeek}</span>
+                                            <span>{course?.lecturesPerWeek}</span>
                                         </li>
                                         <li>
                                             <h6>Lecture Length</h6>
-                                            <span>{selectedReviews?.lecturesLength}</span>
+                                            <span>{course?.lecturesLength}</span>
                                         </li>
                                         <li>
                                             <h6>Course Availiblity</h6>
-                                            <span>{selectedReviews?.courseAvailability}</span>
+                                            <span>{course?.courseAvailability}</span>
                                         </li>
                                         </div>
                                     </ul>
@@ -125,7 +125,7 @@ export default function Detail() {
 
                                 <div className="main_content">
                                     <div className="descriptions">
-                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedReviews?.courseOutline}</ReactMarkdown>
+                                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{course?.courseOutline}</ReactMarkdown>
                                     </div>
                                     {/* End description */}
 
@@ -139,7 +139,7 @@ export default function Detail() {
                         </div>
                         {/* End box inner */}
                     </div>
-            }
+            {/* } */}
 
         </div>
     );

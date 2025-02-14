@@ -1,66 +1,75 @@
 import Social from "../../../Social";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { GetAllCSS } from "../../../../redux/action";
-import { useDispatch, useSelector } from "react-redux";
-import DOMPurify from "dompurify";
-import { toast } from "react-toastify";
+// import { useRouter } from "next/router";
+// import { useEffect } from "react";
+// import { GetAllCSS } from "../../../../redux/action";
+// import { useDispatch, useSelector } from "react-redux";
+// import DOMPurify from "dompurify";
+// import { toast } from "react-toastify";
 import { Loader } from "../../../../assets";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-export default function CSSAndPMSDetail() {
-  const router = useRouter();
-  const { slug } = router.query; // Slug from the URL
+export default function CSSAndPMSDetail({essay}) {
+  // const router = useRouter();
+  // const { slug } = router.query; // Slug from the URL
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  const dispatch = useDispatch();
-  const cssAndPms = useSelector((state) => state.cssAndPms);
 
-  const onError = (errorMessage) => {
-    toast.error(errorMessage, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-
-  // Function to generate slug dynamically
-  const generateSlug = (title) => {
-    return title
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
-
-  useEffect(() => {
-    dispatch(GetAllCSS(onError)); // Fetch all services
-  }, [dispatch]);
-
-  // Check if the slug is defined
-  if (!slug) {
-    return <div className='mb-4 mt-4 py-4 text-center'>Loading...</div>; // Wait for slug
+  if (!essay) {
+    return (
+      <div className="mb-4 mt-4 py-4 text-center align-items-center justify-center">
+        <Loader />
+      </div>
+    );
   }
+ 
+  // const dispatch = useDispatch();
+  // const cssAndPms = useSelector((state) => state.cssAndPms);
 
-  // Check if data is loading
-  if (cssAndPms.loading) {
-    return <Loader />; // Show loader while data is being fetched
-  }
+  // const onError = (errorMessage) => {
+  //   toast.error(errorMessage, {
+  //     position: "top-right",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+  // };
+
+  // // Function to generate slug dynamically
+  // const generateSlug = (title) => {
+  //   return title
+  //     .toLowerCase()
+  //     .replace(/ /g, "-")
+  //     .replace(/[^\w-]+/g, "");
+  // };
+
+  // useEffect(() => {
+  //   dispatch(GetAllCSS(onError)); // Fetch all services
+  // }, [dispatch]);
+
+  // // Check if the slug is defined
+  // if (!slug) {
+  //   return <div className='mb-4 mt-4 py-4 text-center'>Loading...</div>; // Wait for slug
+  // }
+
+  // // Check if data is loading
+  // if (cssAndPms.loading) {
+  //   return <Loader />; // Show loader while data is being fetched
+  // }
 
 
-  // Find the service based on the slug
-  const selectedCSSPMS = cssAndPms.allCssAndPms.find(
-    (item) => generateSlug(item.title) === slug
-  );
+  // // Find the service based on the slug
+  // const essayselectedCSSPMS = cssAndPms.allCssAndPms.find(
+  //   (item) => generateSlug(item.title) === slug
+  // );
 
-  // If no service is found after loading, show "Service not found"
-  if (!selectedCSSPMS) {
-    return <div className='mb-4 mt-4 py-4 text-center'><Loader /></div>;
-  }
+  // // If no service is found after loading, show "Service not found"
+  // if (!selectedCSSPMS) {
+  //   return <div className='mb-4 mt-4 py-4 text-center'><Loader /></div>;
+  // }
 
   return (
     <div id="css-pms-details">
@@ -70,7 +79,7 @@ export default function CSSAndPMSDetail() {
             <div className="description_wrap scrollable">
               <div className="cover-container">
                 <Image
-                  src={`${baseUrl}${selectedCSSPMS?.coverImage?.url}`}
+                  src={`${baseUrl}${essay?.coverImage?.url}`}
                   alt={'blog Image'}
                   layout="responsive"
                   width={1170}
@@ -80,16 +89,16 @@ export default function CSSAndPMSDetail() {
                 />
             </div>
               <div className="news_details paddingTop">
-                <h3 className="title">{selectedCSSPMS?.title}</h3>
+                <h3 className="title">{essay?.title}</h3>
               </div>
               <CPFSection />
               <div className="main_content paddingTop">
                 <div className="descriptions" style={{"marginBottom":'20px'}} >
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{selectedCSSPMS?.content}</ReactMarkdown>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{essay?.content}</ReactMarkdown>
                 </div>
                 <div className=" edina_tm_button">
                   <a
-                    href={selectedCSSPMS?.essayLink}
+                    href={essay?.essayLink}
                     className="color"
                     target="_blank"
                     rel="noopener noreferrer"
