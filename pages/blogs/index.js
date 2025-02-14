@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import ParentHOC from "../../components/ParentHOC";
 import theimage from "../../public/img/hero/kazim.jpg"
 import MyBlogs from "../../components/pages/my-blogs";
 
-const index = () => {
-    const pageTitle = "Blogs Page";
+const Index = () => {
+    const pageTitle = "Blogs";
     const description = "Explore insightful blogs by Sir Kazim Ali, covering essay and precis teaching, and career growth strategies. Stay updated and inspired!";
     const keywords = "blogs, sir kazim blogs, syed kazim ali blogs, syed kazim ali articles, blogs list, articles";
     const image = theimage; 
@@ -16,4 +16,4 @@ const index = () => {
     );
 };
 
-export default dynamic(() => Promise.resolve(index), { ssr: false });
+export default Index;
